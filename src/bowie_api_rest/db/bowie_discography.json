@@ -1,0 +1,280 @@
+{
+  "albums_data": [
+    {
+      "title": "David Bowie",
+      "year": 1969,
+      "tracks": [
+        ["Space Oddity","5:16"],
+        ["Unwashed and Somewhat Slightly Dazed","6:12"],
+        ["Don't Sit Down","0:43"],
+        ["Letter to Hermione","2:36"],
+        ["Cygnet Committee","9:36"],
+        ["Janine","3:25"],
+        ["An Occasional Dream","3:01"],
+        ["Wild Eyed Boy from Freecloud","4:51"],
+        ["God Knows I'm Good","3:21"],
+        ["Memory of a Free Festival","9:41"]
+      ]
+    },
+    {
+      "title": "The Man Who Sold the World",
+      "year": 1970,
+      "tracks": [
+        ["The Width of a Circle", "8:05"],
+        ["All the Madmen", "5:38"],
+        ["Black Country Rock", "3:32"],
+        ["After All", "3:52"],
+        ["Running Gun Blues", "3:11"],
+        ["Saviour Machine", "4:25"],
+        ["She Shook Me Cold", "4:13"],
+        ["The Man Who Sold the World", "3:55"],
+        ["The Supermen", "3:38"]
+      ]
+    },
+    {
+      "title": "Hunky Dory",
+      "year": 1971,
+      "tracks": [
+        ["Changes", "3:37"],
+        ["Oh! You Pretty Things", "3:12"],
+        ["Eight Line Poem", "2:55"],
+        ["Life on Mars?", "3:43"],
+        ["Kooks", "2:53"],
+        ["Quicksand", "5:08"],
+        ["Fill Your Heart", "3:07"],
+        ["Andy Warhol", "3:56"],
+        ["Song for Bob Dylan", "4:12"],
+        ["Queen Bitch", "3:18"],
+        ["The Bewlay Brothers", "5:22"]
+      ]
+    },
+    {
+      "title": "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
+      "year": 1972,
+      "tracks": [
+        ["Five Years", "4:42"],
+        ["Soul Love", "3:34"],
+        ["Moonage Daydream", "4:40"],
+        ["Starman", "4:10"],
+        ["It Ain't Easy", "2:58"],
+        ["Lady Stardust", "3:22"],
+        ["Star", "2:47"],
+        ["Hang On to Yourself", "2:40"],
+        ["Ziggy Stardust", "3:13"],
+        ["Suffragette City", "3:25"],
+        ["Rock 'n' Roll Suicide", "2:58"]
+      ]
+    },
+    {
+      "title": "Aladdin Sane",
+      "year": 1973,
+      "tracks": [
+        ["Watch That Man", "4:30"],
+        ["Aladdin Sane (1913-1938-197??)", "5:06"],
+        ["Panic in Detroit", "5:18"],
+        ["Cracked Actor", "2:58"],
+        ["Time", "4:17"],
+        ["The Prettiest Star", "3:05"],
+        ["Let's Spend the Night Together", "3:33"],
+        ["Drive-In Saturday", "4:29"],
+        ["Oh! You Pretty Things", "3:12"],
+        ["Lady Grinning Soul", "3:51"]
+      ]
+    },
+    {
+      "title": "Pin Ups",
+      "year": 1973,
+      "tracks": [
+        ["Rosalyn", "2:27"],
+        ["Here Comes the Night", "3:09"],
+        ["I Wish You Would", "2:40"],
+        ["See Emily Play", "4:03"],
+        ["Everything’s Alright", "2:26"],
+        ["I Can’t Explain", "2:07"],
+        ["Friday on My Mind", "3:18"],
+        ["Sorrow", "2:48"],
+        ["Don’t Bring Me Down", "2:01"],
+        ["Shapes of Things", "2:47"],
+        ["Anyway, Anyhow, Anywhere", "3:04"],
+        ["Where Have All the Good Times Gone", "2:35"],
+        ["Growin’ Up (bonus)", "3:26"],
+        ["Port of Amsterdam (bonus)", "3:19"]
+      ]
+    },
+    {
+      "title": "Diamond Dogs",
+      "year": 1974,
+      "tracks": [
+        ["Future Legend", "1:08"],
+        ["Diamond Dogs", "6:02"],
+        ["Sweet Thing", "3:38"],
+        ["Candidate", "6:01"],
+        ["Sweet Thing (Reprise)", "1:14"],
+        ["Rebel Rebel", "4:30"],
+        ["Rock 'n' Roll with Me", "4:11"],
+        ["We Are the Dead", "5:26"],
+        ["1984", "3:25"],
+        ["Big Brother", "2:37"],
+        ["Chant of the Ever Circling Skeletal Family", "4:46"]
+      ]
+    },
+    {
+      "title": "Young Americans",
+      "year": 1975,
+      "tracks": [
+        ["Young Americans", "5:10"],
+        ["Win", "4:44"],
+        ["Fascination", "3:43"],
+        ["Right", "3:35"],
+        ["Somebody Up There Likes Me", "5:14"],
+        ["Across the Universe", "4:08"],
+        ["Fame", "4:12"],
+        ["Can You Hear Me", "4:11"],
+        ["Who Can I Be Now?", "4:20"],
+        ["It's Gonna Be Me", "3:13"]
+      ]
+    },
+    {
+      "title": "Station to Station",
+      "year": 1976,
+      "tracks": [
+        ["Station to Station", "10:14"],
+        ["Golden Years", "4:03"],
+        ["Word on a Wing", "6:04"],
+        ["TVC 15", "5:34"],
+        ["Stay", "6:16"],
+        ["Wild Is the Wind", "6:05"]
+      ]
+    },
+    {
+      "title": "Low",
+      "year": 1977,
+      "tracks": [
+        ["Speed of Life", "3:44"],
+        ["Breaking Glass", "3:28"],
+        ["What in the World", "4:24"],
+        ["Sound and Vision", "3:05"],
+        ["Always Crashing in the Same Car", "3:32"],
+        ["Be My Wife", "2:35"],
+        ["Art Decade", "3:10"],
+        ["Weeping Wall", "4:48"],
+        ["Subterraneans", "5:40"]
+      ]
+    },
+    {
+      "title": "\"Heroes\"",
+      "year": 1977,
+      "tracks": [
+        ["Beauty and the Beast", "3:34"],
+        ["Joe the Lion", "3:06"],
+        ["Heroes", "6:08"],
+        ["Sons of the Silent Age", "3:17"],
+        ["Blackout", "3:48"],
+        ["V-2 Schneider", "3:10"],
+        ["Sense of Doubt", "3:57"],
+        ["Moss Garden", "5:05"],
+        ["Neuköln", "4:32"],
+        ["The Secret Life of Arabia", "3:44"]
+      ]
+    },
+    {
+      "title": "Lodger",
+      "year": 1979,
+      "tracks": [
+        ["Fantastic Voyage", "2:55"],
+        ["African Night Flight", "2:54"],
+        ["Move On", "3:16"],
+        ["Yassassin (Turkish for: 'Long Live')", "4:15"],
+        ["Red Sails", "2:31"],
+        ["DJ", "2:44"],
+        ["Look Back in Anger", "3:08"],
+        ["Boys Keep Swinging", "2:52"],
+        ["Repetition", "3:01"],
+        ["Red Money", "3:03"]
+      ]
+    },
+    {
+      "title": "Scary Monsters (and Super Creeps)",
+      "year": 1980,
+      "tracks": [
+        ["It's No Game (No. 1)", "4:20"],
+        ["Up the Hill Backwards", "2:43"],
+        ["Scary Monsters (and Super Creeps)", "4:08"],
+        ["Ashes to Ashes", "4:26"],
+        ["Fashion", "4:48"],
+        ["Teenage Wildlife", "6:51"],
+        ["Scream Like a Baby", "3:36"],
+        ["Kingdom Come", "2:49"],
+        ["Because You're Young", "2:50"],
+        ["Crossfire", "5:34"],
+        ["You're Not Alone", "2:45"],
+        ["Future Legend", "0:55"],
+        ["Teenage Wildlife (Reprise)", "1:18"]
+      ]
+    },
+    {
+      "title": "Let's Dance",
+      "year": 1983,
+      "tracks": [
+        ["Modern Love", "4:48"],
+        ["China Girl", "5:34"],
+        ["Let's Dance", "7:38"],
+        ["Without You", "3:09"],
+        ["Ricochet", "5:14"],
+        ["Criminal World", "4:25"],
+        ["Cat People (Putting Out Fire)", "5:10"],
+        ["Shake It", "3:52"],
+        ["Under Pressure", "4:05"]
+      ]
+    },
+    {
+      "title": "Hours...",
+      "year": 1999,
+      "tracks": [
+        ["Thursday's Child","5:22"],
+        ["Something in the Air","5:46"],
+        ["Survive","4:11"],
+        ["If I'm Dreaming My Life","7:04"],
+        ["Seven","4:04"],
+        ["What's Really Happening?","4:10"],
+        ["The Pretty Things Are Going to Hell","4:41"],
+        ["New Angels of Promise","4:37"],
+        ["Brilliant Adventure","1:51"],
+        ["The Dreamers","5:13"]
+      ]
+    },
+    {
+      "title": "The Next Day",
+      "year": 2013,
+      "tracks": [
+        ["The Next Day","3:51"],
+        ["Dirty Boys","2:58"],
+        ["The Stars (Are Out Tonight)","3:56"],
+        ["Love Is Lost","3:57"],
+        ["Where Are We Now?","4:08"],
+        ["Valentine’s Day","3:01"],
+        ["If You Can See Me","3:15"],
+        ["I'd Rather Be High","3:53"],
+        ["Boss of Me","4:09"],
+        ["Dancing Out in Space","3:24"],
+        ["How Does the Grass Grow?","4:33"],
+        ["(You Will) Set the World On Fire","3:30"],
+        ["You Feel So Lonely You Could Die","4:41"],
+        ["Heat","4:25"]
+      ]
+    },
+    {
+      "title": "Blackstar",
+      "year": 2016,
+      "tracks": [
+        ["Blackstar", "9:57"],
+        ["'Tis a Pity She Was a Whore", "5:16"],
+        ["Lazarus", "6:22"],
+        ["Sue (Or in a Season of Crime)", "3:58"],
+        ["Girl Loves Me", "4:50"],
+        ["Dollar Days", "4:53"],
+        ["I Can't Give Everything Away", "5:47"]
+      ]
+    }
+  ]
+}
