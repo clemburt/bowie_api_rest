@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src &mdash; bowie_api_rest 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bowie_api_rest package" href="bowie_api_rest.html" />
+    <link rel="prev" title="Purpose" href="purpose.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            bowie_api_rest
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="purpose.html">Purpose</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Source code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html">bowie_api_rest package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bowie_api_rest</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">src</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src">
+<h1>src<a class="headerlink" href="#src" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bowie_api_rest.html">bowie_api_rest package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.config">bowie_api_rest.config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.config.DEFAULT_DB_PATH"><code class="docutils literal notranslate"><span class="pre">DEFAULT_DB_PATH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.crud">bowie_api_rest.crud module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.crud.get_albums_by_title"><code class="docutils literal notranslate"><span class="pre">get_albums_by_title()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.crud.get_albums_containing_track"><code class="docutils literal notranslate"><span class="pre">get_albums_containing_track()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.database">bowie_api_rest.database module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.__init__"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.construct"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.copy"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.create_engine"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.create_engine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.dict"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.engine"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.engine</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.from_orm"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.json"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_config"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_construct"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_copy"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_dump"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_dump_json"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_extra"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_fields"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_fields_set"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_json_schema"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_post_init"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_rebuild"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_validate"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_validate_json"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.parse_file"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.parse_obj"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.parse_raw"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.schema"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.schema_json"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.DatabaseConfig.validate"><code class="docutils literal notranslate"><span class="pre">DatabaseConfig.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.__init__"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.construct"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.copy"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.create_engine"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.create_engine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.db_file"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.db_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.dict"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.engine"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.engine</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.from_db_file"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.from_db_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.from_orm"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.json"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_config"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_construct"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_copy"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_dump"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_dump_json"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_extra"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_fields"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_fields_set"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_json_schema"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_post_init"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_rebuild"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_validate"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_validate_json"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.parse_file"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.parse_obj"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.parse_raw"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.schema"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.schema_json"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.FileDatabaseConfig.validate"><code class="docutils literal notranslate"><span class="pre">FileDatabaseConfig.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.create_session_dependency"><code class="docutils literal notranslate"><span class="pre">create_session_dependency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.get_session_factory"><code class="docutils literal notranslate"><span class="pre">get_session_factory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.database.init_db"><code class="docutils literal notranslate"><span class="pre">init_db()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.main">bowie_api_rest.main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.main.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.models">bowie_api_rest.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album"><code class="docutils literal notranslate"><span class="pre">Album</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.__init__"><code class="docutils literal notranslate"><span class="pre">Album.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.id"><code class="docutils literal notranslate"><span class="pre">Album.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.metadata"><code class="docutils literal notranslate"><span class="pre">Album.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.registry"><code class="docutils literal notranslate"><span class="pre">Album.registry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.title"><code class="docutils literal notranslate"><span class="pre">Album.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.tracks"><code class="docutils literal notranslate"><span class="pre">Album.tracks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Album.year"><code class="docutils literal notranslate"><span class="pre">Album.year</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track"><code class="docutils literal notranslate"><span class="pre">Track</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.__init__"><code class="docutils literal notranslate"><span class="pre">Track.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.album"><code class="docutils literal notranslate"><span class="pre">Track.album</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.album_id"><code class="docutils literal notranslate"><span class="pre">Track.album_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.duration"><code class="docutils literal notranslate"><span class="pre">Track.duration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.id"><code class="docutils literal notranslate"><span class="pre">Track.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.metadata"><code class="docutils literal notranslate"><span class="pre">Track.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.registry"><code class="docutils literal notranslate"><span class="pre">Track.registry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.models.Track.title"><code class="docutils literal notranslate"><span class="pre">Track.title</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.routes">bowie_api_rest.routes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.routes.get_session_placeholder"><code class="docutils literal notranslate"><span class="pre">get_session_placeholder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.routes.list_albums"><code class="docutils literal notranslate"><span class="pre">list_albums()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.routes.search_albums_by_title"><code class="docutils literal notranslate"><span class="pre">search_albums_by_title()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.routes.search_albums_containing_track"><code class="docutils literal notranslate"><span class="pre">search_albums_containing_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.routes.set_get_session_dependency"><code class="docutils literal notranslate"><span class="pre">set_get_session_dependency()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.schemas">bowie_api_rest.schemas module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead"><code class="docutils literal notranslate"><span class="pre">AlbumRead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.__init__"><code class="docutils literal notranslate"><span class="pre">AlbumRead.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.construct"><code class="docutils literal notranslate"><span class="pre">AlbumRead.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.copy"><code class="docutils literal notranslate"><span class="pre">AlbumRead.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.dict"><code class="docutils literal notranslate"><span class="pre">AlbumRead.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.from_orm"><code class="docutils literal notranslate"><span class="pre">AlbumRead.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.id"><code class="docutils literal notranslate"><span class="pre">AlbumRead.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.json"><code class="docutils literal notranslate"><span class="pre">AlbumRead.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_config"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_construct"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_copy"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_dump"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_dump_json"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_extra"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_fields"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_fields_set"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_json_schema"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_post_init"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_rebuild"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_validate"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_validate_json"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">AlbumRead.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.parse_file"><code class="docutils literal notranslate"><span class="pre">AlbumRead.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.parse_obj"><code class="docutils literal notranslate"><span class="pre">AlbumRead.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.parse_raw"><code class="docutils literal notranslate"><span class="pre">AlbumRead.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.schema"><code class="docutils literal notranslate"><span class="pre">AlbumRead.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.schema_json"><code class="docutils literal notranslate"><span class="pre">AlbumRead.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.title"><code class="docutils literal notranslate"><span class="pre">AlbumRead.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.tracks"><code class="docutils literal notranslate"><span class="pre">AlbumRead.tracks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">AlbumRead.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.validate"><code class="docutils literal notranslate"><span class="pre">AlbumRead.validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.AlbumRead.year"><code class="docutils literal notranslate"><span class="pre">AlbumRead.year</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.__init__"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.construct"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.copy"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.dict"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.duration"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.duration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.from_orm"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.json"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_construct"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_copy"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_dump"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_dump_json"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_extra"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_fields"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_fields_set"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_json_schema"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_post_init"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_rebuild"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_validate"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_validate_json"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.parse_file"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.parse_obj"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.parse_raw"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.schema"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.schema_json"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.title"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.BaseConfigModel.validate"><code class="docutils literal notranslate"><span class="pre">BaseConfigModel.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead"><code class="docutils literal notranslate"><span class="pre">TrackRead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.__init__"><code class="docutils literal notranslate"><span class="pre">TrackRead.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.construct"><code class="docutils literal notranslate"><span class="pre">TrackRead.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.copy"><code class="docutils literal notranslate"><span class="pre">TrackRead.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.dict"><code class="docutils literal notranslate"><span class="pre">TrackRead.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.duration"><code class="docutils literal notranslate"><span class="pre">TrackRead.duration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.from_orm"><code class="docutils literal notranslate"><span class="pre">TrackRead.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.id"><code class="docutils literal notranslate"><span class="pre">TrackRead.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.json"><code class="docutils literal notranslate"><span class="pre">TrackRead.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_config"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_construct"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_copy"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_dump"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_dump_json"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_extra"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_fields"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_fields_set"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_json_schema"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_post_init"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_rebuild"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_validate"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_validate_json"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">TrackRead.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.parse_file"><code class="docutils literal notranslate"><span class="pre">TrackRead.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.parse_obj"><code class="docutils literal notranslate"><span class="pre">TrackRead.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.parse_raw"><code class="docutils literal notranslate"><span class="pre">TrackRead.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.schema"><code class="docutils literal notranslate"><span class="pre">TrackRead.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.schema_json"><code class="docutils literal notranslate"><span class="pre">TrackRead.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.title"><code class="docutils literal notranslate"><span class="pre">TrackRead.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">TrackRead.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas.TrackRead.validate"><code class="docutils literal notranslate"><span class="pre">TrackRead.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest.schemas_base">bowie_api_rest.schemas_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase"><code class="docutils literal notranslate"><span class="pre">AlbumBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.__init__"><code class="docutils literal notranslate"><span class="pre">AlbumBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.construct"><code class="docutils literal notranslate"><span class="pre">AlbumBase.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.copy"><code class="docutils literal notranslate"><span class="pre">AlbumBase.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.dict"><code class="docutils literal notranslate"><span class="pre">AlbumBase.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.from_orm"><code class="docutils literal notranslate"><span class="pre">AlbumBase.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.json"><code class="docutils literal notranslate"><span class="pre">AlbumBase.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_config"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_construct"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_copy"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_dump"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_dump_json"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_extra"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_fields"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_fields_set"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_json_schema"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_post_init"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_rebuild"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_validate"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_validate_json"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">AlbumBase.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.parse_file"><code class="docutils literal notranslate"><span class="pre">AlbumBase.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.parse_obj"><code class="docutils literal notranslate"><span class="pre">AlbumBase.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.parse_raw"><code class="docutils literal notranslate"><span class="pre">AlbumBase.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.schema"><code class="docutils literal notranslate"><span class="pre">AlbumBase.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.schema_json"><code class="docutils literal notranslate"><span class="pre">AlbumBase.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.title"><code class="docutils literal notranslate"><span class="pre">AlbumBase.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">AlbumBase.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.validate"><code class="docutils literal notranslate"><span class="pre">AlbumBase.validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.AlbumBase.year"><code class="docutils literal notranslate"><span class="pre">AlbumBase.year</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase"><code class="docutils literal notranslate"><span class="pre">TrackBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.__init__"><code class="docutils literal notranslate"><span class="pre">TrackBase.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.construct"><code class="docutils literal notranslate"><span class="pre">TrackBase.construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.copy"><code class="docutils literal notranslate"><span class="pre">TrackBase.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.dict"><code class="docutils literal notranslate"><span class="pre">TrackBase.dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.duration"><code class="docutils literal notranslate"><span class="pre">TrackBase.duration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.from_orm"><code class="docutils literal notranslate"><span class="pre">TrackBase.from_orm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.json"><code class="docutils literal notranslate"><span class="pre">TrackBase.json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_config"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_construct"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_construct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_copy"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_dump"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_dump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_dump_json"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_dump_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_extra"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_fields"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_fields_set"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_fields_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_json_schema"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_parametrized_name"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_parametrized_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_post_init"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_rebuild"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_rebuild()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_validate"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_validate_json"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_validate_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.model_validate_strings"><code class="docutils literal notranslate"><span class="pre">TrackBase.model_validate_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.parse_file"><code class="docutils literal notranslate"><span class="pre">TrackBase.parse_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.parse_obj"><code class="docutils literal notranslate"><span class="pre">TrackBase.parse_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.parse_raw"><code class="docutils literal notranslate"><span class="pre">TrackBase.parse_raw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.schema"><code class="docutils literal notranslate"><span class="pre">TrackBase.schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.schema_json"><code class="docutils literal notranslate"><span class="pre">TrackBase.schema_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.title"><code class="docutils literal notranslate"><span class="pre">TrackBase.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.update_forward_refs"><code class="docutils literal notranslate"><span class="pre">TrackBase.update_forward_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bowie_api_rest.html#bowie_api_rest.schemas_base.TrackBase.validate"><code class="docutils literal notranslate"><span class="pre">TrackBase.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bowie_api_rest.html#module-bowie_api_rest">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="purpose.html" class="btn btn-neutral float-left" title="Purpose" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bowie_api_rest.html" class="btn btn-neutral float-right" title="bowie_api_rest package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Clement Burtscher.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
