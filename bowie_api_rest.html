@@ -136,7 +136,7 @@ the necessary environment variables and defines constants for file paths and oth
 configuration parameters used across the project.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="bowie_api_rest.config.DEFAULT_DB_PATH">
-<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_DB_PATH</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/home/runner/work/bowie_api_rest/bowie_api_rest/src/bowie_api_rest/db/bowie_discography.db')</span></em><a class="headerlink" href="#bowie_api_rest.config.DEFAULT_DB_PATH" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_DB_PATH</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/app/src/bowie_api_rest/db/bowie_discography.db')</span></em><a class="headerlink" href="#bowie_api_rest.config.DEFAULT_DB_PATH" title="Link to this definition"></a></dt>
 <dd><p>This variable holds the default path to the SQLite database file used by the application.
 It can be overridden by the <cite>DB_PATH</cite> environment variable loaded from the <cite>.env</cite> file.
 If not defined, the default path will be relative to the current file’s directory.</p>
@@ -1297,7 +1297,7 @@ to inject a session into route handlers.</p>
 database initialization, session dependency injection, and route registration.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.main.create_app">
-<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.main.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('/home/runner/work/bowie_api_rest/bowie_api_rest/src/bowie_api_rest/db/bowie_discography.db')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.main.create_app" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.main.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('/app/src/bowie_api_rest/db/bowie_discography.db')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.main.create_app" title="Link to this definition"></a></dt>
 <dd><p>Create and configure the FastAPI application instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
