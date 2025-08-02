@@ -53,18 +53,33 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Run tests inside the Docker container using the PDM script (defined in pyproject.toml)
-      - name: Run tests with PDM inside container
-        # Run tests
+      # Build the Docker image (we use the already built image)
+      - name: Build Docker image for Tests
+        run: docker build -t bowie-api-rest .
+
+      # Install test dependencies inside the Docker container
+      - name: Install test dependencies inside Docker
         run: |
           docker run --rm \
-            ${{ env.IMAGE_NAME }} \
+            -v $PWD:/app \
+            -w /app \
+            bowie-api-rest \
+            pdm install -dG test
+
+      # Run tests inside the Docker container using the PDM script (defined in pyproject.toml)
+      - name: Run tests with PDM inside container
+        run: |
+          docker run --rm \
+            -v $PWD:/app \
+            -w /app \
+            bowie-api-rest \
             pdm test
 
   # Job to launch the API REST container and test the API endpoints
   api-rest:
     name: 🖥️ Launch API REST
     runs-on: ubuntu-latest
+    # This job depends on the build job
     needs: build
     services:
       # Define a PostgreSQL service for database access
@@ -91,14 +106,14 @@ jobs:
         with:
           python-version: 3.12
 
-      # Build the Docker image
-      - name: Build Docker image
-        run: docker build -t bowie-api-rest .
+      # Pull the pre-built Docker image from GHCR
+      - name: Pull pre-built Docker image
+        run: docker pull ghcr.io/clemburt/bowie_api_rest:latest
 
       # Run the API container in detached mode (background)
       - name: Run the API container
         run: |
-          docker run -d --name bowie-api-rest -p 8000:8000 bowie-api-rest
+          docker run -d --name bowie-api-rest -p 8000:8000 ghcr.io/clemburt/bowie_api_rest:latest
 
       # Wait for the API to be ready before sending requests
       - name: Wait for API to be ready
@@ -120,6 +135,12 @@ jobs:
           echo $response | jq '.'
           
           echo "☎️ Request sent:"
+          echo "curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=star'"
+          response=$(curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=star')
+          echo "✉️ Response received:"
+          echo $response | jq '.'
+
+          echo "☎️ Request sent:"
           echo "curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=scary monsters'"
           response=$(curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=scary monsters')
           echo "✉️ Response received:"
@@ -135,14 +156,11 @@ jobs:
       - name: Stop Docker container
         run: docker stop bowie-api-rest
 
-
-  # Job to build and deploy the documentation
+  # Job to build and deploy the documentation using Docker
   doc:
-    name: 📚 Build and deploy Docs
+    name: 📚 Build and deploy Docs using Docker
     runs-on: ubuntu-latest
-    # This job depends on the build
-    needs: build
-    # Run this job only on the main branch or PRs to main
+    needs: build  # This job depends on the build
     if: |
       github.ref == 'refs/heads/main' ||  
       (
@@ -154,25 +172,27 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Set up Python environment for documentation generation
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      # Build the Docker image (we use the already built image)
+      - name: Build Docker image for Docs
+        run: docker build -t bowie-api-rest .
 
-      # Install PDM
-      - name: Install PDM
+      # Install the documentation dependencies in the Docker container
+      - name: Install documentation dependencies inside Docker
         run: |
-          curl -sSL https://pdm-project.org/install-pdm.py | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          docker run --rm \
+            -v $PWD:/app \
+            -w /app \
+            bowie-api-rest \
+            pdm install -dG doc
 
-      # Install documentation dependencies
-      - name: Install doc dependencies
-        run: pdm install -G doc
-
-      # Build the documentation using PDM
-      - name: Build documentation
-        run: pdm doc
+      # Build the documentation inside Docker
+      - name: Build documentation inside Docker
+        run: |
+          docker run --rm \
+            -v $PWD:/app \
+            -w /app \
+            bowie-api-rest \
+            pdm doc
 
       # Deploy the documentation to GitHub Pages
       - name: Deploy to GitHub Pages
