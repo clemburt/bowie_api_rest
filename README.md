@@ -1,4 +1,3 @@
-# bowie_api_rest
 # Table of Contents
 - [Purpose](#purpose)
 - [Installation](#installation)
@@ -7,6 +6,8 @@
   - [API Endpoints](#api-endpoints)
     - [Search tracks by title](#search-tracks-by-title)
     - [Search albums by title](#search-albums-by-title)
+  - [Scripts](#scripts)
+    - [Build .db file](#build-db-file)
 - [Tests](#tests)
 - [Documentation](#documentation)
 - [Docker Notes](#docker-notes)
@@ -14,7 +15,7 @@
 - [Authors](#authors)
 
 # Purpose
-A RESTful API built with FastAPI and SQLAlchemy to explore David Bowie's discography, using pdm and pydantic.
+**bowie_api_rest** is a RESTful API built with FastAPI and SQLAlchemy to explore David Bowie's discography, using pdm and pydantic.
 
 The API provides endpoints to retrieve albums, tracks, and search for specific albums or tracks by title. It uses SQLAlchemy for database interactions and includes an in-memory or file-based SQLite database to store album and track data.
 
@@ -354,10 +355,35 @@ Expected response (for example):
 
 These examples should help you interact with the API REST and test various endpoints to search for albums and tracks. Make sure the API is running before sending these requests!
 
+## Scripts
+### Build .db file
+This script *scripts/build_db.py* loads David Bowie album data from the JSON file *src/bowie_api_rest/db/bowie_discography.json*, validates it using **Pydantic v2**, and populates an SQLite database *src/bowie_api_rest/db/bowie_discography.db* with albums and tracks using **SQLAlchemy ORM**. This .db file is the default SQLite database loaded when no file is provided.
+
+Features:
+- Loads album data from a JSON file.
+- Initializes or overwrites an SQLite database.
+- Seeds the database with album and track information.
+
+Run the script with:
+```bash
+pdm build_db
+```
+
+This will create or overwrite the SQLite database and populate it with the data.
+
 # Tests
 Run the test suite using:
 ```bash
+pdm install -dG test
 pdm test
+```
+
+The Docker image installs only production dependencies (--prod), so tests must be run explicitly with test group install:
+
+```bash
+docker run --rm \
+  ghcr.io/clemburt/bowie_api_rest:latest \
+  sh -c "pdm install -dG test && pdm test"
 ```
 
 This will:
@@ -367,7 +393,16 @@ This will:
 # Documentation
 Build the sphinx documentation using
 ```bash
+pdm install -dG doc
 pdm doc
+```
+
+The Docker image installs only production dependencies (--prod), so doc must be run explicitly with doc group install:
+
+```bash
+docker run --rm \
+  ghcr.io/clemburt/bowie_api_rest:latest \
+  sh -c "pdm install -dG doc && pdm doc"
 ```
 
 📚 [Documentation](https://clemburt.github.io/bowie_api_rest/)
