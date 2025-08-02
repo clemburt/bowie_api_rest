@@ -3,12 +3,14 @@ name: CI Pipeline
 on:
   # Trigger the pipeline on push to any branch
   push:
+    # Run on push to any branch
     branches:
-      - '**'  # Run on push to any branch
+      - '**'
   # Trigger the pipeline on pull requests to any branch
   pull_request:
+    # Run on PRs to any branch
     branches:
-      - '**'  # Run on PRs to any branch
+      - '**'
   # Allow manual triggering of the pipeline
   workflow_dispatch:  
 
@@ -22,7 +24,8 @@ jobs:
     name: 🐋 Build and Push Docker Image
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  # Checkout the repository
+      # Checkout the repository
+      - uses: actions/checkout@v3
 
       # Authenticate to GitHub Container Registry
       - name: Log in to GHCR
@@ -44,25 +47,26 @@ jobs:
   test:
     name: 🧪 Run Tests in Docker Container
     runs-on: ubuntu-latest
-    needs: build  # This job depends on the build job
+    # This job depends on the build job
+    needs: build
     steps:
-      - uses: actions/checkout@v3  # Checkout the repository
+      # Checkout the repository
+      - uses: actions/checkout@v3
 
       # Run tests inside the Docker container using the PDM script (defined in pyproject.toml)
       - name: Run tests with PDM inside container
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}  # Use secret API key
+        # Run tests
         run: |
           docker run --rm \
-            -e TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}" \
             ${{ env.IMAGE_NAME }} \
-            pdm test  # Run tests
+            pdm test
 
   # Job to launch the API REST container and test the API endpoints
   api-rest:
     name: 🖥️ Launch API REST
     runs-on: ubuntu-latest
-    needs: build  # This job also depends on the build job
+    # This job also depends on the build job
+    needs: build
     services:
       # Define a PostgreSQL service that will be used by the app for database access during testing
       postgres:
@@ -70,21 +74,25 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: pass
-          POSTGRES_DB: test_db  # Database name for testing
+          # Database name for testing
+          POSTGRES_DB: test_db
         ports: ["5432:5432"]
+        # Health check to wait until the DB is ready
         options: >-
-          --health-cmd "pg_isready -U postgres"  # Health check to wait until the DB is ready
+          --health-cmd "pg_isready -U postgres"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v3  # Checkout the repository
+      # Checkout the repository
+      - uses: actions/checkout@v3
 
       # Set up Python environment (needed for pdm installation)
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.11  # Use Python version 3.11
+          # Use Python version 3.12
+          python-version: 3.12
 
       # Build the Docker image from the Dockerfile
       - name: Build Docker image
@@ -92,26 +100,27 @@ jobs:
 
       # Run the API container in detached mode (background)
       - name: Run the API container
+        # Run the API on port 8000
         run: |
-          docker run -d --name bowie-api-rest -p 8000:8000 bowie-api-rest  # Run the API on port 8000
+          docker run -d --name bowie-api-rest -p 8000:8000 bowie-api-rest
 
       # Test API endpoints using curl
       - name: Run API tests with curl
+      # Wait for the API to be ready before sending curl requests
+      # Test track search for "Fa"
+      # Test track search for "Fashion"
+      # Test album search for "scary monsters"
         run: |
-          # Wait for the API to be ready before sending curl requests
           sleep 5
           
-          # Test track search for "Fa"
           response=$(curl -s -o /dev/null -w "%{http_code}" 'http://127.0.0.1:8000/tracks/Fa/albums')
           echo "Response for /tracks/Fa/albums: $response"
           if [ "$response" -ne 200 ]; then exit 1; fi
           
-          # Test track search for "Fashion"
           response=$(curl -s -o /dev/null -w "%{http_code}" 'http://127.0.0.1:8000/tracks/Fashion/albums')
           echo "Response for /tracks/Fashion/albums: $response"
           if [ "$response" -ne 200 ]; then exit 1; fi
           
-          # Test album search for "scary monsters"
           response=$(curl -s -o /dev/null -w "%{http_code}" -G "http://127.0.0.1:8000/albums/by-title/" --data-urlencode "album_title=scary monsters")
           echo "Response for /albums/by-title/?album_title=scary monsters: $response"
           if [ "$response" -ne 200 ]; then exit 1; fi
@@ -124,7 +133,9 @@ jobs:
   doc:
     name: 📚 Build and Deploy Docs
     runs-on: ubuntu-latest
-    needs: build  # This job depends on the build 
+    # This job depends on the build
+    needs: build
+    # Run this job only on the main branch or PRs to main
     if: |
       github.ref == 'refs/heads/main' ||  
       (
@@ -133,7 +144,8 @@ jobs:
         contains(github.event.pull_request.labels.*.name, 'documentation')
       )
     steps:
-      - uses: actions/checkout@v3  # Checkout the repository
+      # Checkout the repository
+      - uses: actions/checkout@v3
 
       # Set up Python environment for documentation generation
       - name: Set up Python
