@@ -107,22 +107,28 @@ jobs:
       # Test API endpoints using curl and print the responses
       - name: Run API tests with curl
         run: |
-          echo "Testing track search for 'Fa'..."
+          echo "☎️ Request sent:"
+          echo "curl -s 'http://127.0.0.1:8000/tracks/Fa/albums'"
           response=$(curl -s 'http://127.0.0.1:8000/tracks/Fa/albums')
-          echo "Response for /tracks/Fa/albums: "
-          echo ""
+          echo "✉️ Response received:"
           echo $response | jq '.'
 
-          echo "Testing track search for 'Fashion'..."
+          echo "☎️ Request sent:"
+          echo "curl -s 'http://127.0.0.1:8000/tracks/Fashion/albums'"
           response=$(curl -s 'http://127.0.0.1:8000/tracks/Fashion/albums')
-          echo "Response for /tracks/Fashion/albums: "
-          echo ""
+          echo "✉️ Response received:"
           echo $response | jq '.'
           
-          echo "Testing album search for 'scary monsters'..."
-          response=$(curl -s -G "http://127.0.0.1:8000/albums/by-title/" --data-urlencode "album_title=scary monsters")
-          echo "Response for /albums/by-title/?album_title=scary monsters: "
-          echo ""
+          echo "☎️ Request sent:"
+          echo "curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=scary monsters'"
+          response=$(curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=scary monsters')
+          echo "✉️ Response received:"
+          echo $response | jq '.'
+
+          echo "☎️ Request sent:"
+          echo "curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=The Dark Side of the Moon'"
+          response=$(curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=The Dark Side of the Moon')
+          echo "✉️ Response received (expected to be empty or 404):"
           echo $response | jq '.'
 
       # Optionally, stop and clean up the Docker container after tests
