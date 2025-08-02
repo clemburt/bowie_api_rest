@@ -21,7 +21,7 @@ env:
 jobs:
   # Job to build and push the Docker image to GitHub Container Registry (GHCR)
   build:
-    name: 🐋 Build and Push Docker Image
+    name: 🐋 Build and push Docker Image
     runs-on: ubuntu-latest
     steps:
       # Checkout the repository
@@ -45,7 +45,7 @@ jobs:
 
   # Job to run tests inside a Docker container
   test:
-    name: 🧪 Run Tests in Docker Container
+    name: 🧪 Run tests
     runs-on: ubuntu-latest
     # This job depends on the build job
     needs: build
@@ -131,7 +131,7 @@ jobs:
 
   # Job to build and deploy the documentation
   doc:
-    name: 📚 Build and Deploy Docs
+    name: 📚 Build and deploy Docs
     runs-on: ubuntu-latest
     # This job depends on the build
     needs: build
