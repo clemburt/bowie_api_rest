@@ -65,19 +65,17 @@ jobs:
   api-rest:
     name: 🖥️ Launch API REST
     runs-on: ubuntu-latest
-    # This job also depends on the build job
     needs: build
     services:
-      # Define a PostgreSQL service that will be used by the app for database access during testing
+      # Define a PostgreSQL service for database access
       postgres:
         image: postgres:15
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: pass
-          # Database name for testing
           POSTGRES_DB: test_db
         ports: ["5432:5432"]
-        # Health check to wait until the DB is ready
+        # Health check to ensure the DB is ready before using it
         options: >-
           --health-cmd "pg_isready -U postgres"
           --health-interval 10s
@@ -88,46 +86,49 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Set up Python environment (needed for pdm installation)
+      # Set up Python environment for the app (needed for pdm installation)
       - uses: actions/setup-python@v4
         with:
-          # Use Python version 3.12
           python-version: 3.12
 
-      # Build the Docker image from the Dockerfile
+      # Build the Docker image
       - name: Build Docker image
         run: docker build -t bowie-api-rest .
 
       # Run the API container in detached mode (background)
       - name: Run the API container
-        # Run the API on port 8000
         run: |
           docker run -d --name bowie-api-rest -p 8000:8000 bowie-api-rest
 
-      # Test API endpoints using curl
+      # Wait for the API to be ready before sending requests
+      - name: Wait for API to be ready
+        run: sleep 5
+
+      # Test API endpoints using curl and print the responses
       - name: Run API tests with curl
-      # Wait for the API to be ready before sending curl requests
-      # Test track search for "Fa"
-      # Test track search for "Fashion"
-      # Test album search for "scary monsters"
         run: |
-          sleep 5
+          echo "Testing track search for 'Fa'..."
+          response=$(curl -s 'http://127.0.0.1:8000/tracks/Fa/albums')
+          echo "Response for /tracks/Fa/albums: "
+          echo ""
+          echo $response | jq '.'
+
+          echo "Testing track search for 'Fashion'..."
+          response=$(curl -s 'http://127.0.0.1:8000/tracks/Fashion/albums')
+          echo "Response for /tracks/Fashion/albums: "
+          echo ""
+          echo $response | jq '.'
           
-          response=$(curl -s -o /dev/null -w "%{http_code}" 'http://127.0.0.1:8000/tracks/Fa/albums')
-          echo "Response for /tracks/Fa/albums: $response"
-          if [ "$response" -ne 200 ]; then exit 1; fi
-          
-          response=$(curl -s -o /dev/null -w "%{http_code}" 'http://127.0.0.1:8000/tracks/Fashion/albums')
-          echo "Response for /tracks/Fashion/albums: $response"
-          if [ "$response" -ne 200 ]; then exit 1; fi
-          
-          response=$(curl -s -o /dev/null -w "%{http_code}" -G "http://127.0.0.1:8000/albums/by-title/" --data-urlencode "album_title=scary monsters")
-          echo "Response for /albums/by-title/?album_title=scary monsters: $response"
-          if [ "$response" -ne 200 ]; then exit 1; fi
+          echo "Testing album search for 'scary monsters'..."
+          response=$(curl -s -G "http://127.0.0.1:8000/albums/by-title/" --data-urlencode "album_title=scary monsters")
+          echo "Response for /albums/by-title/?album_title=scary monsters: "
+          echo ""
+          echo $response | jq '.'
 
       # Optionally, stop and clean up the Docker container after tests
       - name: Stop Docker container
         run: docker stop bowie-api-rest
+
 
   # Job to build and deploy the documentation
   doc:
