@@ -15,11 +15,19 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "pre-commit>=4.2.0",
+]
 test = [
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
-    "sqlalchemy>=2.0.42",
-    "pytest-sqlalchemy>=0.3.0",
+]
+doc = [
+    "sphinx>=8.2.3",
+    "sphinx-autodoc-typehints>=3.2.0",
+    "sphinx-rtd-theme>=3.0.2",
 ]
 
 [tool.pytest.ini_options]
