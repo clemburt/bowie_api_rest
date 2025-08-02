@@ -8,4 +8,6 @@ Welcome to bowie_api_rest's documentation!
    :caption: Contents:
 
    Purpose <purpose>
+   Usage <usage>
    Source code <modules>
+   CHANGELOG <changelog>
