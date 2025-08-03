@@ -5,20 +5,23 @@ This module defines the API routes for interacting with albums and tracks in the
 It includes routes to retrieve albums by track title, list all albums, and fetch albums by title.
 """
 
-from typing import List, Callable, Optional
-from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy.orm import Session, selectinload
-from sqlalchemy import select
+from typing import Callable, List, Optional
 
-from bowie_api_rest.crud import get_albums_by_title, get_albums_containing_track
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import select
+from sqlalchemy.orm import Session, selectinload
+
+from bowie_api_rest.crud import (get_albums_by_title,
+                                 get_albums_containing_track)
 from bowie_api_rest.models import Album
-from bowie_api_rest.schemas import AlbumRead, TrackRead
+from bowie_api_rest.schemas import AlbumRead, HealthResponse, TrackRead
 
 # Initialize the API router for handling album and track endpoints
 router = APIRouter()
 
 # Placeholder for the session dependency to be set dynamically
 _get_session_dependency: Optional[Callable[..., Session]] = None
+
 
 def set_get_session_dependency(dep: Callable[..., Session]) -> None:
     """
@@ -28,6 +31,7 @@ def set_get_session_dependency(dep: Callable[..., Session]) -> None:
     """
     global _get_session_dependency
     _get_session_dependency = dep
+
 
 def get_session_placeholder() -> Session:
     """
@@ -42,8 +46,11 @@ def get_session_placeholder() -> Session:
     # Consume the generator to get the session instance
     return next(_get_session_dependency())
 
+
 @router.get("/tracks/{track_title}/albums", response_model=List[AlbumRead])
-def search_albums_containing_track(track_title: str, session: Session = Depends(get_session_placeholder)) -> List[AlbumRead]:
+def search_albums_containing_track(
+    track_title: str, session: Session = Depends(get_session_placeholder)
+) -> List[AlbumRead]:
     """
     Retrieve all albums containing at least one track whose title partially matches the given string (case-insensitive).
     Only the matching tracks are included in each album's track list.
@@ -55,7 +62,7 @@ def search_albums_containing_track(track_title: str, session: Session = Depends(
     :rtype: List[AlbumRead]
     """
     albums: List[Album] = get_albums_containing_track(session, track_title)
-    
+
     # If no albums are found, raise HTTPException
     if not albums:
         raise HTTPException(status_code=404, detail="No albums found for this track")
@@ -68,16 +75,24 @@ def search_albums_containing_track(track_title: str, session: Session = Depends(
         filtered_tracks = [t for t in album.tracks if lower_search in t.title.lower()]
         if filtered_tracks:
             # Convert filtered tracks to Pydantic models
-            track_reads = [TrackRead(id=t.id, title=t.title, duration=t.duration) for t in filtered_tracks]
+            track_reads = [
+                TrackRead(id=t.id, title=t.title, duration=t.duration)
+                for t in filtered_tracks
+            ]
             # Create AlbumRead model with filtered tracks only
-            album_read = AlbumRead(id=album.id, title=album.title, year=album.year, tracks=track_reads)
+            album_read = AlbumRead(
+                id=album.id, title=album.title, year=album.year, tracks=track_reads
+            )
             result.append(album_read)
 
     # If no matching tracks are found, raise HTTPException
     if not result:
-        raise HTTPException(status_code=404, detail="No tracks found matching the query")
+        raise HTTPException(
+            status_code=404, detail="No tracks found matching the query"
+        )
 
     return result
+
 
 @router.get("/albums/", response_model=List[AlbumRead])
 def list_albums(session: Session = Depends(get_session_placeholder)) -> List[AlbumRead]:
@@ -93,10 +108,13 @@ def list_albums(session: Session = Depends(get_session_placeholder)) -> List[Alb
     albums = session.execute(stmt).scalars().all()
     return albums
 
+
 @router.get("/albums/by-title/", response_model=List[AlbumRead])
 def search_albums_by_title(
-    album_title: str = Query(..., description="Title of the album to search (case-insensitive)"),
-    session: Session = Depends(get_session_placeholder)
+    album_title: str = Query(
+        ..., description="Title of the album to search (case-insensitive)"
+    ),
+    session: Session = Depends(get_session_placeholder),
 ) -> List[AlbumRead]:
     """
     Get albums by partial album title and return all matching albums with their tracks.
@@ -114,3 +132,14 @@ def search_albums_by_title(
         raise HTTPException(status_code=404, detail="Album not found")
 
     return albums
+
+
+@router.get("/health", response_model=HealthResponse)
+def health_check() -> HealthResponse:
+    """
+    Health check endpoint to verify that the API is running.
+
+    :return: Health status response model with status 'ok'.
+    :rtype: HealthResponse
+    """
+    return HealthResponse(status="ok")

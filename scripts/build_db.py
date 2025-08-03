@@ -11,12 +11,11 @@ from typing import List, Self
 from pydantic import FilePath, validate_call
 from pydantic_settings import BaseSettings
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import Session, sessionmaker
 
 from bowie_api_rest.config import DEFAULT_DB_PATH
 from bowie_api_rest.models import Album, Base, Track
 from bowie_api_rest.schemas_base import AlbumBase
-
 
 
 class AlbumInput(AlbumBase):
@@ -25,6 +24,7 @@ class AlbumInput(AlbumBase):
 
     :param List[List[str]] tracks: List of tracks as [title, duration].
     """
+
     tracks: List[List[str]]
 
     def to_album(self) -> Album:
@@ -48,6 +48,7 @@ class AlbumsConfig(BaseSettings):
 
     :param albums_data: List of album inputs.
     """
+
     albums_data: List[AlbumInput]
 
     @classmethod
@@ -81,7 +82,9 @@ def init_db(sqlite_path: Path) -> sessionmaker[Session]:
     return sessionmaker(bind=engine, future=True)
 
 
-def seed_database(albums: List[AlbumInput], session_factory: sessionmaker[Session]) -> None:
+def seed_database(
+    albums: List[AlbumInput], session_factory: sessionmaker[Session]
+) -> None:
     """
     Insert albums and their tracks into the database.
 
@@ -102,7 +105,10 @@ def seed_database(albums: List[AlbumInput], session_factory: sessionmaker[Sessio
 if __name__ == "__main__":
     json_path = (
         Path(__file__).resolve().parent.parent
-        / "src" / "bowie_api_rest" / "db" / "bowie_discography.json"
+        / "src"
+        / "bowie_api_rest"
+        / "db"
+        / "bowie_discography.json"
     )
     db_path = DEFAULT_DB_PATH
 

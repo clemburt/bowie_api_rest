@@ -7,6 +7,7 @@ validate and serialize the input and output data for the API endpoints.
 
 from pydantic import BaseModel
 
+
 class TrackBase(BaseModel):
     """
     Pydantic model for reading track data.
@@ -14,6 +15,7 @@ class TrackBase(BaseModel):
     :param str title: Track title.
     :param str duration: Track duration in mm:ss format.
     """
+
     title: str
     duration: str  # mm:ss format
 
@@ -25,5 +27,6 @@ class AlbumBase(BaseModel):
     :param str title: Album title.
     :param int year: Release year of the album.
     """
+
     title: str
     year: int

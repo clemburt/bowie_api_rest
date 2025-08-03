@@ -10,7 +10,6 @@
     - [Build .db file](#build-db-file)
 - [Tests](#tests)
 - [Documentation](#documentation)
-- [Docker Notes](#docker-notes)
 - [License](#license)
 - [Authors](#authors)
 
@@ -406,15 +405,6 @@ docker run --rm \
 ```
 
 📚 [Documentation](https://clemburt.github.io/bowie_api_rest/)
-
-# Docker Notes
-The image installs only production dependencies (--prod), so tests must be run explicitly with dev install:
-
-```bash
-docker run --rm \
-  ghcr.io/clemburt/bowie_api_rest:latest \
-  sh -c "pdm install -G test && pdm test"
-```
 
 # License
 MIT License
