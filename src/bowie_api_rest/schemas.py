@@ -6,7 +6,9 @@ It includes models for reading track and album data, including the list of track
 """
 
 from typing import List
+
 from pydantic import ConfigDict
+
 from bowie_api_rest.schemas_base import AlbumBase, TrackBase
 
 
@@ -19,6 +21,7 @@ class BaseConfigModel(TrackBase):
 
     :cvar ConfigDict model_config: Pydantic configuration dictionary enabling ORM mode.
     """
+
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -28,6 +31,7 @@ class TrackRead(TrackBase):
 
     :param int id: Track identifier.
     """
+
     id: int
 
 
@@ -38,5 +42,6 @@ class AlbumRead(AlbumBase):
     :param int id: Album identifier.
     :param List[TrackRead] tracks: List of tracks in the album.
     """
+
     id: int
     tracks: List[TrackRead] = []

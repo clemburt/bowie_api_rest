@@ -1,11 +1,12 @@
 """
 Database connection and initialization using SQLAlchemy with dynamic configuration.
 """
-from typing import Generator, Self, Callable
 
-from sqlalchemy import Engine, create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from typing import Callable, Generator, Self
+
 from pydantic import BaseModel, FilePath
+from sqlalchemy import Engine, create_engine
+from sqlalchemy.orm import Session, sessionmaker
 
 from bowie_api_rest.models import Base
 
@@ -16,6 +17,7 @@ class DatabaseConfig(BaseModel):
 
     :param Engine engine: SQLAlchemy Engine instance.
     """
+
     engine: Engine
 
     # Allow non-serializable types like SQLAlchemy Engine
@@ -37,6 +39,7 @@ class FileDatabaseConfig(DatabaseConfig):
 
     :param FilePath db_file: Path to the SQLite database file.
     """
+
     db_file: FilePath
 
     @classmethod
@@ -74,7 +77,9 @@ def init_db(engine: Engine) -> None:
     Base.metadata.create_all(bind=engine)
 
 
-def create_session_dependency(session_factory: sessionmaker[Session]) -> Callable[[], Generator[Session, None, None]]:
+def create_session_dependency(
+    session_factory: sessionmaker[Session],
+) -> Callable[[], Generator[Session, None, None]]:
     """
     Create a FastAPI-compatible dependency function that yields a SQLAlchemy session.
 
@@ -85,6 +90,7 @@ def create_session_dependency(session_factory: sessionmaker[Session]) -> Callabl
     :return: Callable dependency function that yields a session.
     :rtype: Callable[[], Generator[Session, None, None]]
     """
+
     def get_session() -> Generator[Session, None, None]:
         # Context-managed session with automatic cleanup
         with session_factory() as session:

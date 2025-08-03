@@ -4,8 +4,8 @@ Data access layer for querying album and track information.
 
 from typing import List
 
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
-from sqlalchemy import select, func
 
 from bowie_api_rest.models import Album, Track
 
@@ -13,7 +13,7 @@ from bowie_api_rest.models import Album, Track
 def get_albums_by_title(session: Session, album_title_part: str) -> List[Album]:
     """
     Retrieve all albums that match a partial album title (case-insensitive).
-    
+
     :param Session session: SQLAlchemy session to perform the query.
     :param str album_title_part: Partial album title to search for (case-insensitive).
     :return: List of albums matching the search criteria, with their tracks.
@@ -29,6 +29,7 @@ def get_albums_by_title(session: Session, album_title_part: str) -> List[Album]:
     # Execute the query and get all albums matching the partial title
     albums: List[Album] = session.execute(stmt).scalars().all()
     return albums
+
 
 def get_albums_containing_track(session: Session, track_title_part: str) -> List[Album]:
     """

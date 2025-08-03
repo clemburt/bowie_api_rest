@@ -11,14 +11,11 @@ from fastapi import FastAPI
 from pydantic import FilePath
 from sqlalchemy.orm import sessionmaker
 
-from bowie_api_rest.config import DEFAULT_DB_PATH
-from bowie_api_rest.database import (
-    FileDatabaseConfig,
-    init_db,
-    get_session_factory,
-    create_session_dependency,
-)
 from bowie_api_rest import routes
+from bowie_api_rest.config import DEFAULT_DB_PATH
+from bowie_api_rest.database import (FileDatabaseConfig,
+                                     create_session_dependency,
+                                     get_session_factory, init_db)
 
 
 def create_app(db_path: Optional[FilePath] = DEFAULT_DB_PATH) -> FastAPI:

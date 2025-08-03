@@ -5,9 +5,10 @@ This file contains the SQLAlchemy ORM models used for representing albums and th
 It defines the `Album` and `Track` models, which are used for interacting with the album and track data.
 """
 
-from typing import Optional, List
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship, Mapped
+from typing import List, Optional
+
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import Mapped, declarative_base, relationship
 
 # Base class for all models
 Base = declarative_base()
@@ -23,13 +24,16 @@ class Track(Base):
     :param Optional[int] album_id: Foreign key to the associated album.
     :param Optional[Album] album: Reference to the associated Album object.
     """
+
     __tablename__ = "track"
 
     id: Mapped[int] = Column(Integer, primary_key=True, autoincrement=True)
     title: Mapped[str] = Column(String, nullable=False)
     duration: Mapped[str] = Column(String, nullable=False)  # Format: mm:ss
 
-    album_id: Mapped[Optional[int]] = Column(Integer, ForeignKey("album.id"), nullable=True)
+    album_id: Mapped[Optional[int]] = Column(
+        Integer, ForeignKey("album.id"), nullable=True
+    )
     album: Mapped[Optional["Album"]] = relationship("Album", back_populates="tracks")
 
 
@@ -42,10 +46,13 @@ class Album(Base):
     :param int year: Release year of the album.
     :param List[Track] tracks: List of associated Track objects.
     """
+
     __tablename__ = "album"
 
     id: Mapped[int] = Column(Integer, primary_key=True, autoincrement=True)
     title: Mapped[str] = Column(String, nullable=False)
     year: Mapped[int] = Column(Integer, nullable=False)
 
-    tracks: Mapped[List[Track]] = relationship("Track", back_populates="album", cascade="all, delete-orphan")
+    tracks: Mapped[List[Track]] = relationship(
+        "Track", back_populates="album", cascade="all, delete-orphan"
+    )

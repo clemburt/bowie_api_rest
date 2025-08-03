@@ -12,14 +12,13 @@ on:
     branches:
       - '**'
   # Allow manual triggering of the pipeline
-  workflow_dispatch:  
+  workflow_dispatch:
 
 env:
   # The name of the Docker image to be pushed and used for testing
   IMAGE_NAME: ghcr.io/clemburt/bowie_api_rest:latest
 
 jobs:
-  # Job to build and push the Docker image to GitHub Container Registry (GHCR)
   build:
     name: 🐋 Build and push Docker Image
     runs-on: ubuntu-latest
@@ -35,47 +34,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Build the Docker image (using the latest version of the base image)
+      # Build the Docker image (pull base image to ensure freshness)
       - name: Build Docker image
         run: docker build --pull -t ${{ env.IMAGE_NAME }} .
 
-      # Push the built Docker image to GHCR
+      # Push to GHCR
       - name: Push Docker image
         run: docker push ${{ env.IMAGE_NAME }}
 
-  # Job to run tests inside a Docker container
-  test:
-    name: 🧪 Run tests
-    runs-on: ubuntu-latest
-    # This job depends on the build job
-    needs: build
-    steps:
-      # Checkout the repository
-      - uses: actions/checkout@v3
-
-      # Build the Docker image (we use the already built image)
-      - name: Build Docker image for Tests
-        run: docker build -t bowie-api-rest .
-
-      # Install test dependencies inside the Docker container
-      - name: Install test dependencies inside Docker
-        run: |
-          docker run --rm \
-            -v $PWD:/app \
-            -w /app \
-            bowie-api-rest \
-            pdm install -dG test
-
-      # Run tests inside the Docker container using the PDM script (defined in pyproject.toml)
-      - name: Run tests with PDM inside container
-        run: |
-          docker run --rm \
-            -v $PWD:/app \
-            -w /app \
-            bowie-api-rest \
-            pdm test
-
-  # Job to launch the API REST container and test the API endpoints
   api-rest:
     name: 🖥️ Launch API REST
     runs-on: ubuntu-latest
@@ -101,19 +67,14 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Set up Python environment for the app (needed for pdm installation)
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
-
-      # Pull the pre-built Docker image from GHCR
-      - name: Pull pre-built Docker image
-        run: docker pull ghcr.io/clemburt/bowie_api_rest:latest
-
       # Run the API container in detached mode (background)
+      # -d: Run container in detached mode, meaning it runs in the background without blocking the terminal
+      # --name: Assign a custom name to the container for easier management (e.g., for stopping or removing it later)
       - name: Run the API container
         run: |
-          docker run -d --name bowie-api-rest -p 8000:8000 ghcr.io/clemburt/bowie_api_rest:latest
+          docker run -d --name bowie-api-rest-container \
+            ${{ env.IMAGE_NAME }} \
+            bowie-api-rest -p 8000:8000
 
       # Wait for the API to be ready before sending requests
       - name: Wait for API to be ready
@@ -133,7 +94,7 @@ jobs:
           response=$(curl -s 'http://127.0.0.1:8000/tracks/Fashion/albums')
           echo "✉️ Response received:"
           echo $response | jq '.'
-          
+
           echo "☎️ Request sent:"
           echo "curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=star'"
           response=$(curl -s -G 'http://127.0.0.1:8000/albums/by-title/' --data-urlencode 'album_title=star')
@@ -152,17 +113,35 @@ jobs:
           echo "✉️ Response received (expected to be empty or 404):"
           echo $response | jq '.'
 
-      # Optionally, stop and clean up the Docker container after tests
-      - name: Stop Docker container
-        run: docker stop bowie-api-rest
+      # Clean up the container at the end of the job (this is done manually because it has been run in detached mode)
+      # Remove the container explicitly by name at the end of the job
+      # This is necessary because the container is running in detached mode
+      # --name allows us to reference the container by name easily for stopping/removal
+      - name: Clean up Docker container
+        run: |
+          docker rm -f bowie-api-rest-container || echo "Container not found or already removed."
 
-  # Job to build and deploy the documentation using Docker
+  test:
+    name: 🧪 Run tests
+    runs-on: ubuntu-latest
+    # This job depends on the build job
+    needs: build
+    steps:
+      # Checkout the repository
+      - uses: actions/checkout@v3
+
+      - name: Run tests with PDM
+        run: |
+          docker run --rm \
+            ${{ env.IMAGE_NAME }} \
+            sh -c "pdm install -dG test && pdm test"
+
   doc:
     name: 📚 Build and deploy Docs using Docker
     runs-on: ubuntu-latest
     needs: build  # This job depends on the build
     if: |
-      github.ref == 'refs/heads/main' ||  
+      github.ref == 'refs/heads/main' ||
       (
         github.event_name == 'pull_request' &&
         github.event.pull_request.base.ref == 'main' &&
@@ -172,32 +151,30 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Build the Docker image (we use the already built image)
-      - name: Build Docker image for Docs
-        run: docker build -t bowie-api-rest .
-
-      # Install the documentation dependencies in the Docker container
-      - name: Install documentation dependencies inside Docker
+      - name: Build documentation with PDM
         run: |
           docker run --rm \
-            -v $PWD:/app \
-            -w /app \
-            bowie-api-rest \
-            pdm install -dG doc
+            ${{ env.IMAGE_NAME }} \
+            sh -c "pdm install -dG doc && pdm doc"
 
-      # Build the documentation inside Docker
-      - name: Build documentation inside Docker
-        run: |
-          docker run --rm \
-            -v $PWD:/app \
-            -w /app \
-            bowie-api-rest \
-            pdm doc
-
-      # Deploy the documentation to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/build
           publish_branch: gh-pages
+
+  lint:
+    name: 🩺 Lint source code
+    runs-on: ubuntu-latest
+    # This job depends on the build job
+    needs: build
+    steps:
+      # Checkout the repository
+      - uses: actions/checkout@v3
+
+      - name: Run linting with PDM
+        run: |
+          docker run --rm \
+            ${{ env.IMAGE_NAME }} \
+            sh -c "pdm install -dG lint && pdm lint"
