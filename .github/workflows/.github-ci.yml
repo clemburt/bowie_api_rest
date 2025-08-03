@@ -135,6 +135,10 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
+      # Install git explicitly to support GitHub Pages deployment (required by peaceiris/actions-gh-pages)
+      - name: Install git
+        run: apk add --no-cache git
+
       - name: Build documentation with PDM
         run: |
           pdm install -dG doc
