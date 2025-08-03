@@ -5,7 +5,7 @@ This module defines the API routes for interacting with albums and tracks in the
 It includes routes to retrieve albums by track title, list all albums, and fetch albums by title.
 """
 
-from typing import Callable, List, Optional
+from typing import Callable, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
@@ -132,3 +132,14 @@ def search_albums_by_title(
         raise HTTPException(status_code=404, detail="Album not found")
 
     return albums
+
+
+@router.get("/health")
+def health_check() -> Dict[str, str]:
+    """
+    Health check endpoint to verify that the API is running.
+
+    :return: Dictionary with status message
+    :rtype: Dict[str, str]
+    """
+    return {"status": "ok"}

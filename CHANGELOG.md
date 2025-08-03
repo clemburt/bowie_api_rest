@@ -5,6 +5,7 @@ All notable changes to the bowie_api_rest project will be documented in this fil
 ### Added
 - Add linter
 - Add pre-commit hooks
+- Add health route to verify that the API is running
 ### Changed
 - Pass Docker image as container
 ### Fixed
