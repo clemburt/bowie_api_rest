@@ -5,7 +5,7 @@ This module defines the API routes for interacting with albums and tracks in the
 It includes routes to retrieve albums by track title, list all albums, and fetch albums by title.
 """
 
-from typing import Callable, Dict, List, Optional
+from typing import Callable, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session, selectinload
 from bowie_api_rest.crud import (get_albums_by_title,
                                  get_albums_containing_track)
 from bowie_api_rest.models import Album
-from bowie_api_rest.schemas import AlbumRead, TrackRead
+from bowie_api_rest.schemas import AlbumRead, HealthResponse, TrackRead
 
 # Initialize the API router for handling album and track endpoints
 router = APIRouter()
@@ -134,12 +134,12 @@ def search_albums_by_title(
     return albums
 
 
-@router.get("/health")
-def health_check() -> Dict[str, str]:
+@router.get("/health", response_model=HealthResponse)
+def health_check() -> HealthResponse:
     """
     Health check endpoint to verify that the API is running.
 
-    :return: Dictionary with status message
-    :rtype: Dict[str, str]
+    :return: Health status response model with status 'ok'.
+    :rtype: HealthResponse
     """
-    return {"status": "ok"}
+    return HealthResponse(status="ok")

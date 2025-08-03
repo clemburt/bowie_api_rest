@@ -46,25 +46,15 @@ jobs:
     container:
       image: ghcr.io/clemburt/bowie_api_rest:latest
 
-    services:
-      # PostgreSQL service used as the database for the API
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: pass
-          POSTGRES_DB: test_db
-        ports: ["5432:5432"]
-        # Health check to ensure the DB is ready before using it
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       # Checkout the repository
       - uses: actions/checkout@v3
+
+      # Launch the FastAPI server in the background so subsequent steps can run tests against it
+      - name: Start uvicorn in background
+        run: |
+          echo "Start uvicorn in background"
+          pdm run uvicorn bowie_api_rest.main:app --host 0.0.0.0 --port 8000 --reload &
 
       # Active wait for the API to be ready by polling /health endpoint
       - name: Wait for API to be ready
@@ -80,9 +70,6 @@ jobs:
       # Run the curl tests against the API
       - name: Run API tests with curl
         run: |
-          echo "Wait for the API to be ready before sending requests"
-          sleep 5
-
           echo "☎️ Request sent:"
           echo "curl -s 'http://127.0.0.1:8000/tracks/Fa/albums'"
           response=$(curl -s 'http://127.0.0.1:8000/tracks/Fa/albums')

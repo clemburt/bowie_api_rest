@@ -5,11 +5,22 @@ This module defines Pydantic models used for serializing album and track data to
 It includes models for reading track and album data, including the list of tracks in an album.
 """
 
-from typing import List
+from typing import List, Literal
 
-from pydantic import ConfigDict
+from pydantic import BaseModel, ConfigDict
 
 from bowie_api_rest.schemas_base import AlbumBase, TrackBase
+
+
+class HealthResponse(BaseModel):
+    """
+    Response model for health check endpoint.
+
+    :param status: Status of the API health check, expected to be 'ok' if healthy.
+    :type status: Literal['ok']
+    """
+
+    status: Literal["ok"]
 
 
 class BaseConfigModel(TrackBase):
