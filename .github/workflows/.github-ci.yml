@@ -46,7 +46,7 @@ jobs:
     container:
       image: ghcr.io/clemburt/bowie_api_rest:latest
       # Ensure it doesn't override the entrypoint of the image
-      options: --entrypoint "" -p 8000:8000
+      options: --entrypoint ""
     services:
       # Define a PostgreSQL service for database access
       postgres:
@@ -67,7 +67,20 @@ jobs:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Test API endpoints using curl and print the responses
+      # Step 1: Start the API container
+      # Launch the API in a separate Docker container, in detached mode (-d),
+      # and expose port 8000 to the host so it can be accessed from the main job container
+      # This is necessary because the job's main container (defined in `container:`)
+      # is isolated from the API, so we start the API explicitly in parallel
+      - name: Start API container
+        run: |
+          docker run -d -p 8000:8000 ghcr.io/clemburt/bowie_api_rest:latest
+
+      # Step 2: Wait for the API to be ready (we wait a few seconds here)
+      - name: Wait for API to be ready
+        run: sleep 5
+
+      # Step 3: Run the curl tests against the API
       - name: Run API tests with curl
         run: |
           echo "Wait for the API to be ready before sending requests"
