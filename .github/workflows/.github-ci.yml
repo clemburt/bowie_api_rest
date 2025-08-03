@@ -68,6 +68,7 @@ jobs:
 
       # Active wait for the API to be ready by polling /health endpoint
       - name: Wait for API to be ready
+        timeout-minutes: 1
         run: |
           echo "Waiting for API to be healthy on http://127.0.0.1:8000/health ..."
           until curl -s -f http://127.0.0.1:8000/health; do
