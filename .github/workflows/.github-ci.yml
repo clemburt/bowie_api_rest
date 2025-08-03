@@ -14,10 +14,6 @@ on:
   # Allow manual triggering of the pipeline
   workflow_dispatch:
 
-env:
-  # The name of the Docker image to be pushed and used for testing
-  IMAGE_NAME: ghcr.io/clemburt/bowie_api_rest:latest
-
 jobs:
   build:
     name: 🐋 Build and push Docker Image
@@ -36,11 +32,11 @@ jobs:
 
       # Build the Docker image (pull base image to ensure freshness)
       - name: Build Docker image
-        run: docker build --pull -t ${{ env.IMAGE_NAME }} .
+        run: docker build --pull -t ghcr.io/clemburt/bowie_api_rest:latest .
 
       # Push to GHCR
       - name: Push Docker image
-        run: docker push ${{ env.IMAGE_NAME }}
+        run: docker push ghcr.io/clemburt/bowie_api_rest:latest
 
   api-rest:
     name: 🖥️ Launch API REST
@@ -48,7 +44,7 @@ jobs:
     # This job depends on the build job
     needs: build
     container:
-      image: ${{ env.IMAGE_NAME }}
+      image: ghcr.io/clemburt/bowie_api_rest:latest
       # Ensure it doesn't override the entrypoint of the image
       options: --entrypoint "" -p 8000:8000
     services:
@@ -113,7 +109,7 @@ jobs:
     # This job depends on the build job
     needs: build
     container:
-      image: ${{ env.IMAGE_NAME }}
+      image: ghcr.io/clemburt/bowie_api_rest:latest
       # Ensure it doesn't override the entrypoint of the image
       options: --entrypoint ""
     steps:
@@ -137,7 +133,7 @@ jobs:
         contains(github.event.pull_request.labels.*.name, 'documentation')
       )
     container:
-      image: ${{ env.IMAGE_NAME }}
+      image: ghcr.io/clemburt/bowie_api_rest:latest
       # Ensure it doesn't override the entrypoint of the image
       options: --entrypoint ""
     steps:
@@ -162,7 +158,7 @@ jobs:
     # This job depends on the build job
     needs: build
     container:
-      image: ${{ env.IMAGE_NAME }}
+      image: ghcr.io/clemburt/bowie_api_rest:latest
       # Ensure it doesn't override the entrypoint of the image
       options: --entrypoint ""
     steps:
