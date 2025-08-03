@@ -45,8 +45,6 @@ jobs:
     needs: build
     container:
       image: ghcr.io/clemburt/bowie_api_rest:latest
-      # Ensure it doesn't override the entrypoint of the image
-      options: --entrypoint ""
 
     services:
       # PostgreSQL service used as the database for the API
@@ -63,21 +61,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      # API REST service container running the built Docker image
-      api-rest:
-        image: ghcr.io/clemburt/bowie_api_rest:latest
-        env:
-          # Database connection string pointing to the postgres service
-          DATABASE_URL: "postgres://postgres:pass@postgres:5432/test_db"
-        ports:
-          # Expose API port 8000 to localhost of the runner
-          - 8000:8000
-        # Health check to verify the API is responding at /health endpoint
-        options: >-
-          --health-cmd "curl -f http://localhost:8000/health || exit 1"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 10
 
     steps:
       # Checkout the repository
@@ -136,8 +119,7 @@ jobs:
     needs: build
     container:
       image: ghcr.io/clemburt/bowie_api_rest:latest
-      # Ensure it doesn't override the entrypoint of the image
-      options: --entrypoint ""
+
     steps:
       # Checkout the repository
       - uses: actions/checkout@v3
@@ -160,8 +142,7 @@ jobs:
       )
     container:
       image: ghcr.io/clemburt/bowie_api_rest:latest
-      # Ensure it doesn't override the entrypoint of the image
-      options: --entrypoint ""
+
     steps:
       # Checkout the repository
       - uses: actions/checkout@v3
@@ -185,8 +166,7 @@ jobs:
     needs: build
     container:
       image: ghcr.io/clemburt/bowie_api_rest:latest
-      # Ensure it doesn't override the entrypoint of the image
-      options: --entrypoint ""
+
     steps:
       # Checkout the repository
       - uses: actions/checkout@v3
