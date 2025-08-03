@@ -47,8 +47,9 @@ jobs:
       image: ghcr.io/clemburt/bowie_api_rest:latest
       # Ensure it doesn't override the entrypoint of the image
       options: --entrypoint ""
+
     services:
-      # Define a PostgreSQL service for database access
+      # PostgreSQL service used as the database for the API
       postgres:
         image: postgres:15
         env:
@@ -62,25 +63,38 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      # API REST service container running the built Docker image
+      api-rest:
+        image: ghcr.io/clemburt/bowie_api_rest:latest
+        env:
+          # Database connection string pointing to the postgres service
+          DATABASE_URL: postgres://postgres:pass@postgres:5432/test_db
+        ports:
+          # Expose API port 8000 to localhost of the runner
+          - 8000:8000
+        # Health check to verify the API is responding at /health endpoint
+        options: >-
+
+          --health-cmd "curl -f http://localhost:8000/health || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
 
     steps:
       # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Step 1: Start the API container
-      # Launch the API in a separate Docker container, in detached mode (-d),
-      # and expose port 8000 to the host so it can be accessed from the main job container
-      # This is necessary because the job's main container (defined in `container:`)
-      # is isolated from the API, so we start the API explicitly in parallel
-      - name: Start API container
-        run: |
-          docker run -d -p 8000:8000 ghcr.io/clemburt/bowie_api_rest:latest
-
-      # Step 2: Wait for the API to be ready (we wait a few seconds here)
+      # Active wait for the API to be ready by polling /health endpoint
       - name: Wait for API to be ready
-        run: sleep 5
+        run: |
+          echo "Waiting for API to be healthy on http://127.0.0.1:8000/health ..."
+          until curl -s -f http://127.0.0.1:8000/health; do
+            echo "API not ready yet, waiting 3 seconds..."
+            sleep 3
+          done
+          echo "API is healthy! Proceeding with tests."
 
-      # Step 3: Run the curl tests against the API
+      # Run the curl tests against the API
       - name: Run API tests with curl
         run: |
           echo "Wait for the API to be ready before sending requests"
