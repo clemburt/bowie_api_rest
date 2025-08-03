@@ -72,9 +72,10 @@ jobs:
       # --name: Assign a custom name to the container for easier management (e.g., for stopping or removing it later)
       - name: Run the API container
         run: |
-          docker run -d --name bowie-api-rest-container \
-            ${{ env.IMAGE_NAME }} \
-            bowie-api-rest -p 8000:8000
+          docker run -d \
+            --name bowie-api-rest-container \
+            -p 8000:8000 \
+            ${{ env.IMAGE_NAME }}
 
       # Wait for the API to be ready before sending requests
       - name: Wait for API to be ready
