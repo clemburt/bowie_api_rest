@@ -5,7 +5,7 @@ FROM python:3.12-alpine
 WORKDIR /app
 
 # Install system build dependencies required for installing packages
-RUN apk add --no-cache build-base gcc libffi-dev musl-dev curl jq
+RUN apk add --no-cache build-base gcc libffi-dev musl-dev curl jq git
 
 # Install PDM (Python Development Master) globally
 RUN pip install pdm
