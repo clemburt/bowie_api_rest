@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bowie_api_rest &mdash; bowie_api_rest  documentation</title>
+  <title>Table of Contents &mdash; bowie_api_rest  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -45,8 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="purpose.html">Purpose</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">README</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Source code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">CHANGELOG</a></li>
 </ul>
@@ -65,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">bowie_api_rest</li>
+      <li class="breadcrumb-item active">Table of Contents</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,21 +74,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="bowie-api-rest">
-<h1>bowie_api_rest<a class="headerlink" href="#bowie-api-rest" title="Link to this heading"></a></h1>
-</section>
-<section id="table-of-contents">
+  <section id="table-of-contents">
 <h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="purpose.html"><span class="doc std std-doc">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#purpose"><span class="xref myst">Purpose</span></a></p></li>
 <li><p><a class="reference internal" href="#installation"><span class="xref myst">Installation</span></a></p></li>
-<li><p><a class="reference internal" href="usage.html"><span class="doc std std-doc">Usage</span></a></p>
+<li><p><a class="reference internal" href="#usage"><span class="xref myst">Usage</span></a></p>
 <ul>
 <li><p><a class="reference internal" href="#run-the-api-rest"><span class="xref myst">Run the API REST</span></a></p></li>
 <li><p><a class="reference internal" href="#api-endpoints"><span class="xref myst">API Endpoints</span></a></p>
 <ul>
 <li><p><a class="reference internal" href="#search-tracks-by-title"><span class="xref myst">Search tracks by title</span></a></p></li>
 <li><p><a class="reference internal" href="#search-albums-by-title"><span class="xref myst">Search albums by title</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#scripts"><span class="xref myst">Scripts</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#build-db-file"><span class="xref myst">Build .db file</span></a></p></li>
 </ul>
 </li>
 </ul>
@@ -103,7 +104,7 @@
 </section>
 <section id="purpose">
 <h1>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h1>
-<p>A RESTful API built with FastAPI and SQLAlchemy to explore David Bowie’s discography, using pdm and pydantic.</p>
+<p><strong>bowie_api_rest</strong> is a RESTful API built with FastAPI and SQLAlchemy to explore David Bowie’s discography, using pdm and pydantic.</p>
 <p>The API provides endpoints to retrieve albums, tracks, and search for specific albums or tracks by title. It uses SQLAlchemy for database interactions and includes an in-memory or file-based SQLite database to store album and track data.</p>
 </section>
 <section id="installation">
@@ -421,11 +422,36 @@
 <p>These examples should help you interact with the API REST and test various endpoints to search for albums and tracks. Make sure the API is running before sending these requests!</p>
 </section>
 </section>
+<section id="scripts">
+<h2>Scripts<a class="headerlink" href="#scripts" title="Link to this heading"></a></h2>
+<section id="build-db-file">
+<h3>Build .db file<a class="headerlink" href="#build-db-file" title="Link to this heading"></a></h3>
+<p>This script <em>scripts/build_db.py</em> loads David Bowie album data from the JSON file <em>src/bowie_api_rest/db/bowie_discography.json</em>, validates it using <strong>Pydantic v2</strong>, and populates an SQLite database <em>src/bowie_api_rest/db/bowie_discography.db</em> with albums and tracks using <strong>SQLAlchemy ORM</strong>. This .db file is the default SQLite database loaded when no file is provided.</p>
+<p>Features:</p>
+<ul class="simple">
+<li><p>Loads album data from a JSON file.</p></li>
+<li><p>Initializes or overwrites an SQLite database.</p></li>
+<li><p>Seeds the database with album and track information.</p></li>
+</ul>
+<p>Run the script with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>build_db
+</pre></div>
+</div>
+<p>This will create or overwrite the SQLite database and populate it with the data.</p>
+</section>
+</section>
 </section>
 <section id="tests">
 <h1>Tests<a class="headerlink" href="#tests" title="Link to this heading"></a></h1>
 <p>Run the test suite using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span><span class="nb">test</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>install<span class="w"> </span>-dG<span class="w"> </span><span class="nb">test</span>
+pdm<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<p>The Docker image installs only production dependencies (–prod), so tests must be run explicitly with test group install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ghcr.io/clemburt/bowie_api_rest:latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;pdm install -dG test &amp;&amp; pdm test&quot;</span>
 </pre></div>
 </div>
 <p>This will:</p>
@@ -437,7 +463,14 @@
 <section id="documentation">
 <h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h1>
 <p>Build the sphinx documentation using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>doc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>install<span class="w"> </span>-dG<span class="w"> </span>doc
+pdm<span class="w"> </span>doc
+</pre></div>
+</div>
+<p>The Docker image installs only production dependencies (–prod), so doc must be run explicitly with doc group install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ghcr.io/clemburt/bowie_api_rest:latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;pdm install -dG doc &amp;&amp; pdm doc&quot;</span>
 </pre></div>
 </div>
 <p>📚 <a class="reference external" href="https://clemburt.github.io/bowie_api_rest/">Documentation</a></p>

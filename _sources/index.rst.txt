@@ -7,7 +7,6 @@ Welcome to bowie_api_rest's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   Purpose <purpose>
-   Usage <usage>
+   README <readme>
    Source code <modules>
    CHANGELOG <changelog>

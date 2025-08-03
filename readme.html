@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="src" href="modules.html" />
-    <link rel="prev" title="Purpose" href="purpose.html" /> 
+    <link rel="prev" title="Welcome to bowie_api_rest’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,9 +47,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="purpose.html">Purpose</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#bowie-api-rest">bowie_api_rest</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">README</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
@@ -58,6 +56,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#api-endpoints">API Endpoints</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#search-tracks-by-title">Search tracks by title</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#search-albums-by-title">Search albums by title</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts">Scripts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-db-file">Build .db file</a></li>
 </ul>
 </li>
 </ul>
@@ -89,7 +91,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Usage</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/readme.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -99,21 +101,23 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
-<section id="bowie-api-rest">
-<h2>bowie_api_rest<a class="headerlink" href="#bowie-api-rest" title="Link to this heading"></a></h2>
-</section>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="purpose.html"><span class="doc std std-doc">Purpose</span></a></p></li>
+<li><p><a class="reference internal" href="#purpose"><span class="xref myst">Purpose</span></a></p></li>
 <li><p><a class="reference internal" href="#installation"><span class="xref myst">Installation</span></a></p></li>
-<li><p><a class="reference internal" href="#"><span class="doc std std-doc">Usage</span></a></p>
+<li><p><a class="reference internal" href="#usage"><span class="xref myst">Usage</span></a></p>
 <ul>
 <li><p><a class="reference internal" href="#run-the-api-rest"><span class="xref myst">Run the API REST</span></a></p></li>
 <li><p><a class="reference internal" href="#api-endpoints"><span class="xref myst">API Endpoints</span></a></p>
 <ul>
 <li><p><a class="reference internal" href="#search-tracks-by-title"><span class="xref myst">Search tracks by title</span></a></p></li>
 <li><p><a class="reference internal" href="#search-albums-by-title"><span class="xref myst">Search albums by title</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#scripts"><span class="xref myst">Scripts</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#build-db-file"><span class="xref myst">Build .db file</span></a></p></li>
 </ul>
 </li>
 </ul>
@@ -127,7 +131,7 @@
 </section>
 <section id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
-<p>A RESTful API built with FastAPI and SQLAlchemy to explore David Bowie’s discography, using pdm and pydantic.</p>
+<p><strong>bowie_api_rest</strong> is a RESTful API built with FastAPI and SQLAlchemy to explore David Bowie’s discography, using pdm and pydantic.</p>
 <p>The API provides endpoints to retrieve albums, tracks, and search for specific albums or tracks by title. It uses SQLAlchemy for database interactions and includes an in-memory or file-based SQLite database to store album and track data.</p>
 </section>
 <section id="installation">
@@ -445,11 +449,36 @@
 <p>These examples should help you interact with the API REST and test various endpoints to search for albums and tracks. Make sure the API is running before sending these requests!</p>
 </section>
 </section>
+<section id="scripts">
+<h3>Scripts<a class="headerlink" href="#scripts" title="Link to this heading"></a></h3>
+<section id="build-db-file">
+<h4>Build .db file<a class="headerlink" href="#build-db-file" title="Link to this heading"></a></h4>
+<p>This script <em>scripts/build_db.py</em> loads David Bowie album data from the JSON file <em>src/bowie_api_rest/db/bowie_discography.json</em>, validates it using <strong>Pydantic v2</strong>, and populates an SQLite database <em>src/bowie_api_rest/db/bowie_discography.db</em> with albums and tracks using <strong>SQLAlchemy ORM</strong>. This .db file is the default SQLite database loaded when no file is provided.</p>
+<p>Features:</p>
+<ul class="simple">
+<li><p>Loads album data from a JSON file.</p></li>
+<li><p>Initializes or overwrites an SQLite database.</p></li>
+<li><p>Seeds the database with album and track information.</p></li>
+</ul>
+<p>Run the script with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>build_db
+</pre></div>
+</div>
+<p>This will create or overwrite the SQLite database and populate it with the data.</p>
+</section>
+</section>
 </section>
 <section id="tests">
 <h2>Tests<a class="headerlink" href="#tests" title="Link to this heading"></a></h2>
 <p>Run the test suite using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span><span class="nb">test</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>install<span class="w"> </span>-dG<span class="w"> </span><span class="nb">test</span>
+pdm<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<p>The Docker image installs only production dependencies (–prod), so tests must be run explicitly with test group install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ghcr.io/clemburt/bowie_api_rest:latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;pdm install -dG test &amp;&amp; pdm test&quot;</span>
 </pre></div>
 </div>
 <p>This will:</p>
@@ -461,7 +490,14 @@
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
 <p>Build the sphinx documentation using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>doc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pdm<span class="w"> </span>install<span class="w"> </span>-dG<span class="w"> </span>doc
+pdm<span class="w"> </span>doc
+</pre></div>
+</div>
+<p>The Docker image installs only production dependencies (–prod), so doc must be run explicitly with doc group install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ghcr.io/clemburt/bowie_api_rest:latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;pdm install -dG doc &amp;&amp; pdm doc&quot;</span>
 </pre></div>
 </div>
 <p>📚 <a class="reference external" href="https://clemburt.github.io/bowie_api_rest/">Documentation</a></p>
@@ -491,7 +527,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="purpose.html" class="btn btn-neutral float-left" title="Purpose" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to bowie_api_rest’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="modules.html" class="btn btn-neutral float-right" title="src" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
