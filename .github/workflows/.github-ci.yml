@@ -68,13 +68,12 @@ jobs:
         image: ghcr.io/clemburt/bowie_api_rest:latest
         env:
           # Database connection string pointing to the postgres service
-          DATABASE_URL: postgres://postgres:pass@postgres:5432/test_db
+          DATABASE_URL: "postgres://postgres:pass@postgres:5432/test_db"
         ports:
           # Expose API port 8000 to localhost of the runner
           - 8000:8000
         # Health check to verify the API is responding at /health endpoint
         options: >-
-
           --health-cmd "curl -f http://localhost:8000/health || exit 1"
           --health-interval 10s
           --health-timeout 5s
