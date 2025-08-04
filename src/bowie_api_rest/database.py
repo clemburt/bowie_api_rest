@@ -1,8 +1,7 @@
-"""
-Database connection and initialization using SQLAlchemy with dynamic configuration.
-"""
+"""Database connection and initialization using SQLAlchemy with dynamic configuration."""
 
-from typing import Callable, Generator, Self
+from collections.abc import Callable, Generator
+from typing import Self
 
 from pydantic import BaseModel, FilePath
 from sqlalchemy import Engine, create_engine

@@ -5,10 +5,11 @@ This file contains the SQLAlchemy ORM models used for representing albums and th
 It defines the `Album` and `Track` models, which are used for interacting with the album and track data.
 """
 
-from typing import List, Optional
+from typing import Optional
 
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, declarative_base, relationship
+
 
 # Base class for all models
 Base = declarative_base()
@@ -31,9 +32,7 @@ class Track(Base):
     title: Mapped[str] = Column(String, nullable=False)
     duration: Mapped[str] = Column(String, nullable=False)  # Format: mm:ss
 
-    album_id: Mapped[Optional[int]] = Column(
-        Integer, ForeignKey("album.id"), nullable=True
-    )
+    album_id: Mapped[int | None] = Column(Integer, ForeignKey("album.id"), nullable=True)
     album: Mapped[Optional["Album"]] = relationship("Album", back_populates="tracks")
 
 
@@ -53,6 +52,4 @@ class Album(Base):
     title: Mapped[str] = Column(String, nullable=False)
     year: Mapped[int] = Column(Integer, nullable=False)
 
-    tracks: Mapped[List[Track]] = relationship(
-        "Track", back_populates="album", cascade="all, delete-orphan"
-    )
+    tracks: Mapped[list[Track]] = relationship("Track", back_populates="album", cascade="all, delete-orphan")

@@ -5,20 +5,16 @@ This module creates and configures the FastAPI app, including
 database initialization, session dependency injection, and route registration.
 """
 
-from typing import Optional
-
 from fastapi import FastAPI
 from pydantic import FilePath
 from sqlalchemy.orm import sessionmaker
 
 from bowie_api_rest import routes
 from bowie_api_rest.config import DEFAULT_DB_PATH
-from bowie_api_rest.database import (FileDatabaseConfig,
-                                     create_session_dependency,
-                                     get_session_factory, init_db)
+from bowie_api_rest.database import FileDatabaseConfig, create_session_dependency, get_session_factory, init_db
 
 
-def create_app(db_path: Optional[FilePath] = DEFAULT_DB_PATH) -> FastAPI:
+def create_app(db_path: FilePath | None = DEFAULT_DB_PATH) -> FastAPI:
     """
     Create and configure the FastAPI application instance.
 
