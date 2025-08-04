@@ -22,7 +22,7 @@ def create_app(db_path: FilePath | None = DEFAULT_DB_PATH) -> FastAPI:
     :return: Configured FastAPI application instance.
     :rtype: FastAPI
     """
-    app = FastAPI(title="David Bowie Albums API")
+    app_instance = FastAPI(title="David Bowie Albums API")
 
     # Create the database engine from the given file path
     engine = FileDatabaseConfig.from_db_file(db_path).engine
@@ -40,9 +40,9 @@ def create_app(db_path: FilePath | None = DEFAULT_DB_PATH) -> FastAPI:
     routes.set_get_session_dependency(get_session)
 
     # Include all API routes from the routes module
-    app.include_router(routes.router)
+    app_instance.include_router(routes.router)
 
-    return app
+    return app_instance
 
 
 # Instantiate the FastAPI app with the default database path

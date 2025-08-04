@@ -20,7 +20,7 @@ class DatabaseConfig(BaseModel):
     engine: Engine
 
     # Allow non-serializable types like SQLAlchemy Engine
-    model_config = dict(arbitrary_types_allowed=True)
+    model_config = {"arbitrary_types_allowed": True}
 
     def create_engine(self) -> Engine:
         """
@@ -56,13 +56,13 @@ class FileDatabaseConfig(DatabaseConfig):
         return cls(engine=engine, db_file=db_file)
 
 
-def get_session_factory(engine: Engine) -> sessionmaker[Session]:
+def get_session_factory(engine: Engine) -> sessionmaker:
     """
-    Create a SQLAlchemy session factory from a given engine.
+    Create and configure a SQLAlchemy session factory using the provided engine.
 
     :param Engine engine: SQLAlchemy Engine instance.
-    :return: Configured sessionmaker factory.
-    :rtype: sessionmaker[Session]
+    :return: A configured sessionmaker factory.
+    :rtype: sessionmaker
     """
     return sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
@@ -77,7 +77,7 @@ def init_db(engine: Engine) -> None:
 
 
 def create_session_dependency(
-    session_factory: sessionmaker[Session],
+    session_factory: sessionmaker,
 ) -> Callable[[], Generator[Session, None, None]]:
     """
     Create a FastAPI-compatible dependency function that yields a SQLAlchemy session.
@@ -85,7 +85,7 @@ def create_session_dependency(
     This function can be used with FastAPI's `Depends()` system
     to inject a session into route handlers.
 
-    :param sessionmaker[Session] session_factory: SQLAlchemy session factory.
+    :param sessionmaker session_factory: SQLAlchemy session factory.
     :return: Callable dependency function that yields a session.
     :rtype: Callable[[], Generator[Session, None, None]]
     """
