@@ -138,9 +138,8 @@
 </section>
 <section id="module-bowie_api_rest.config">
 <span id="bowie-api-rest-config-module"></span><h2>bowie_api_rest.config module<a class="headerlink" href="#module-bowie_api_rest.config" title="Link to this heading"></a></h2>
-<p>This module is responsible for managing the configuration of the application. It loads
-the necessary environment variables and defines constants for file paths and other
-configuration parameters used across the project.</p>
+<p>Manage the configuration of the application.</p>
+<p>Load environment variables and define constants for file paths and other configuration parameters used across the project.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="bowie_api_rest.config.DEFAULT_DB_PATH">
 <span class="sig-prename descclassname"><span class="pre">bowie_api_rest.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_DB_PATH</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/__w/bowie_api_rest/bowie_api_rest/src/bowie_api_rest/db/bowie_discography.db')</span></em><a class="headerlink" href="#bowie_api_rest.config.DEFAULT_DB_PATH" title="Link to this definition"></a></dt>
@@ -176,8 +175,7 @@ If not defined, the default path will be relative to the current file’s direct
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.crud.get_albums_containing_track">
 <span class="sig-prename descclassname"><span class="pre">bowie_api_rest.crud.</span></span><span class="sig-name descname"><span class="pre">get_albums_containing_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_title_part</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.crud.get_albums_containing_track" title="Link to this definition"></a></dt>
-<dd><p>Retrieve all albums that contain at least one track with a title
-containing the given substring, case-insensitive.</p>
+<dd><p>Retrieve all albums that contain at least one track with a title containing the given substring, case-insensitive.</p>
 <p>The tracks of each album are eagerly loaded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1379,7 +1377,7 @@ for example, any mapped columns or relationships.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bowie_api_rest.models.Album.tracks">
-<span class="sig-name descname"><span class="pre">tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapped</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><a class="reference internal" href="#bowie_api_rest.models.Track" title="bowie_api_rest.models.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a><span class="pre">]]</span></em><a class="headerlink" href="#bowie_api_rest.models.Album.tracks" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapped</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><a class="reference internal" href="#bowie_api_rest.models.Track" title="bowie_api_rest.models.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a><span class="pre">]]</span></em><a class="headerlink" href="#bowie_api_rest.models.Album.tracks" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1429,7 +1427,7 @@ for example, any mapped columns or relationships.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bowie_api_rest.models.Track.album_id">
-<span class="sig-name descname"><span class="pre">album_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapped</span></code><span class="pre">[</span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]]</span></em><a class="headerlink" href="#bowie_api_rest.models.Track.album_id" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">album_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapped</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code><span class="pre">]</span></em><a class="headerlink" href="#bowie_api_rest.models.Track.album_id" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1539,8 +1537,8 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.routes.search_albums_containing_track">
 <span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">search_albums_containing_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(get_session_placeholder)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.search_albums_containing_track" title="Link to this definition"></a></dt>
-<dd><p>Retrieve all albums containing at least one track whose title partially matches the given string (case-insensitive).
-Only the matching tracks are included in each album’s track list.</p>
+<dd><p>Retrieve all albums containing at least one track whose title partially matches the given string (case-insensitive).</p>
+<p>Only the matching tracks are included in each album’s track list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1838,7 +1836,7 @@ warnings: How to handle serialization errors. False/”none” ignores them, Tru
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bowie_api_rest.schemas.AlbumRead.model_fields">
-<span class="sig-name descname"><span class="pre">model_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'id':</span> <span class="pre">FieldInfo(annotation=int,</span> <span class="pre">required=True),</span> <span class="pre">'title':</span> <span class="pre">FieldInfo(annotation=str,</span> <span class="pre">required=True),</span> <span class="pre">'tracks':</span> <span class="pre">FieldInfo(annotation=List[TrackRead],</span> <span class="pre">required=False,</span> <span class="pre">default=[]),</span> <span class="pre">'year':</span> <span class="pre">FieldInfo(annotation=int,</span> <span class="pre">required=True)}</span></em><a class="headerlink" href="#bowie_api_rest.schemas.AlbumRead.model_fields" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">model_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'id':</span> <span class="pre">FieldInfo(annotation=int,</span> <span class="pre">required=True),</span> <span class="pre">'title':</span> <span class="pre">FieldInfo(annotation=str,</span> <span class="pre">required=True),</span> <span class="pre">'tracks':</span> <span class="pre">FieldInfo(annotation=list[TrackRead],</span> <span class="pre">required=False,</span> <span class="pre">default=[]),</span> <span class="pre">'year':</span> <span class="pre">FieldInfo(annotation=int,</span> <span class="pre">required=True)}</span></em><a class="headerlink" href="#bowie_api_rest.schemas.AlbumRead.model_fields" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -2065,7 +2063,7 @@ by_name: Whether to use the field’s name when validating against the provided 
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bowie_api_rest.schemas.AlbumRead.tracks">
-<span class="sig-name descname"><span class="pre">tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><a class="reference internal" href="#bowie_api_rest.schemas.TrackRead" title="bowie_api_rest.schemas.TrackRead"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrackRead</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#bowie_api_rest.schemas.AlbumRead.tracks" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><a class="reference internal" href="#bowie_api_rest.schemas.TrackRead" title="bowie_api_rest.schemas.TrackRead"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrackRead</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#bowie_api_rest.schemas.AlbumRead.tracks" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -4622,6 +4620,8 @@ by_name: Whether to use the field’s name when validating against the provided 
 </section>
 <section id="module-bowie_api_rest">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bowie_api_rest" title="Link to this heading"></a></h2>
+<p>bowie_api_rest package.</p>
+<p>This package contains the main modules for the Bowie API REST application.</p>
 </section>
 </section>
 
