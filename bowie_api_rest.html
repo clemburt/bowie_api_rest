@@ -1252,7 +1252,7 @@ by_name: Whether to use the field’s name when validating against the provided 
 to inject a session into route handlers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>session_factory</strong> (<em>sessionmaker</em><em>[</em><em>Session</em><em>]</em>) – SQLAlchemy session factory.</p>
+<dd class="field-odd"><p><strong>session_factory</strong> (<em>sessionmaker</em>) – SQLAlchemy session factory.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Callable dependency function that yields a session.</p>
@@ -1266,16 +1266,16 @@ to inject a session into route handlers.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.database.get_session_factory">
 <span class="sig-prename descclassname"><span class="pre">bowie_api_rest.database.</span></span><span class="sig-name descname"><span class="pre">get_session_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.database.get_session_factory" title="Link to this definition"></a></dt>
-<dd><p>Create a SQLAlchemy session factory from a given engine.</p>
+<dd><p>Create and configure a SQLAlchemy session factory using the provided engine.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>engine</strong> (<em>Engine</em>) – SQLAlchemy Engine instance.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Configured sessionmaker factory.</p>
+<dd class="field-even"><p>A configured sessionmaker factory.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>sessionmaker[Session]</p>
+<dd class="field-odd"><p>sessionmaker</p>
 </dd>
 </dl>
 </dd></dl>
