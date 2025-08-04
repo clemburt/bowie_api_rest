@@ -5,7 +5,7 @@ This module defines Pydantic models used for serializing album and track data to
 It includes models for reading track and album data, including the list of tracks in an album.
 """
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
@@ -55,4 +55,4 @@ class AlbumRead(AlbumBase):
     """
 
     id: int
-    tracks: List[TrackRead] = []
+    tracks: list[TrackRead] = []

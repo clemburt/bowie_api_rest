@@ -1,12 +1,11 @@
 """
-Script to load David Bowie albums from JSON using Pydantic v2 BaseSettings
-and populate a SQLite database using SQLAlchemy ORM.
-The SQLite DB file is created in the same folder as the JSON file,
-and will be overwritten if it already exists.
+Script to load David Bowie albums from JSON using Pydantic v2 BaseSettings and populate a SQLite database using SQLAlchemy ORM.
+
+The SQLite DB file is created in the same folder as the JSON file, and will be overwritten if it already exists.
 """
 
 from pathlib import Path
-from typing import List, Self
+from typing import Self
 
 from pydantic import FilePath, validate_call
 from pydantic_settings import BaseSettings
@@ -25,14 +24,15 @@ class AlbumInput(AlbumBase):
     :param List[List[str]] tracks: List of tracks as [title, duration].
     """
 
-    tracks: List[List[str]]
+    tracks: list[list[str]]
 
     def to_album(self) -> Album:
         """Convert AlbumInput to SQLAlchemy Album instance."""
         return Album(title=self.title, year=self.year)
 
-    def to_tracks(self, album: Album) -> List[Track]:
-        """Convert tracks list to SQLAlchemy Track instances linked to album.
+    def to_tracks(self, album: Album) -> list[Track]:
+        """
+        Convert tracks list to SQLAlchemy Track instances linked to album.
 
         :param album: Album instance to link tracks to.
         :type album: Album
@@ -49,7 +49,7 @@ class AlbumsConfig(BaseSettings):
     :param albums_data: List of album inputs.
     """
 
-    albums_data: List[AlbumInput]
+    albums_data: list[AlbumInput]
 
     @classmethod
     @validate_call
@@ -82,9 +82,7 @@ def init_db(sqlite_path: Path) -> sessionmaker[Session]:
     return sessionmaker(bind=engine, future=True)
 
 
-def seed_database(
-    albums: List[AlbumInput], session_factory: sessionmaker[Session]
-) -> None:
+def seed_database(albums: list[AlbumInput], session_factory: sessionmaker[Session]) -> None:
     """
     Insert albums and their tracks into the database.
 
@@ -103,13 +101,7 @@ def seed_database(
 
 
 if __name__ == "__main__":
-    json_path = (
-        Path(__file__).resolve().parent.parent
-        / "src"
-        / "bowie_api_rest"
-        / "db"
-        / "bowie_discography.json"
-    )
+    json_path = Path(__file__).resolve().parent.parent / "src" / "bowie_api_rest" / "db" / "bowie_discography.json"
     db_path = DEFAULT_DB_PATH
 
     print(f"📂 Loading album data from {json_path}")
