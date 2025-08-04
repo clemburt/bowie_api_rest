@@ -1472,10 +1472,10 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 <dd class="field-odd"><p><strong>RuntimeError</strong> – If the session dependency has not been set.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>SQLAlchemy session instance.</p>
+<dd class="field-even"><p>SQLAlchemy session generator.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Session</p>
+<dd class="field-odd"><p>Generator[Session, None, None]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1496,7 +1496,7 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.routes.list_albums">
-<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">list_albums</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(get_session_placeholder)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.list_albums" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">list_albums</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(_get_session)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.list_albums" title="Link to this definition"></a></dt>
 <dd><p>List all albums with their tracks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1506,14 +1506,14 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 <dd class="field-even"><p>List of all albums with tracks.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="#bowie_api_rest.schemas.AlbumRead" title="bowie_api_rest.schemas.AlbumRead">AlbumRead</a>]</p>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#bowie_api_rest.schemas.AlbumRead" title="bowie_api_rest.schemas.AlbumRead">AlbumRead</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.routes.search_albums_by_title">
-<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">search_albums_by_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">album_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Query(PydanticUndefined)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(get_session_placeholder)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.search_albums_by_title" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">search_albums_by_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">album_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Query(PydanticUndefined)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(_get_session)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.search_albums_by_title" title="Link to this definition"></a></dt>
 <dd><p>Get albums by partial album title and return all matching albums with their tracks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1529,14 +1529,14 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 <dd class="field-odd"><p>List of albums with tracks that match the partial title.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[<a class="reference internal" href="#bowie_api_rest.schemas.AlbumRead" title="bowie_api_rest.schemas.AlbumRead">AlbumRead</a>]</p>
+<dd class="field-even"><p>list[<a class="reference internal" href="#bowie_api_rest.schemas.AlbumRead" title="bowie_api_rest.schemas.AlbumRead">AlbumRead</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bowie_api_rest.routes.search_albums_containing_track">
-<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">search_albums_containing_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(get_session_placeholder)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.search_albums_containing_track" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bowie_api_rest.routes.</span></span><span class="sig-name descname"><span class="pre">search_albums_containing_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Depends(_get_session)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bowie_api_rest.routes.search_albums_containing_track" title="Link to this definition"></a></dt>
 <dd><p>Retrieve all albums containing at least one track whose title partially matches the given string (case-insensitive).</p>
 <p>Only the matching tracks are included in each album’s track list.</p>
 <dl class="field-list simple">
@@ -1553,7 +1553,7 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 <dd class="field-odd"><p>List of albums with filtered matching tracks.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[<a class="reference internal" href="#bowie_api_rest.schemas.AlbumRead" title="bowie_api_rest.schemas.AlbumRead">AlbumRead</a>]</p>
+<dd class="field-even"><p>list[<a class="reference internal" href="#bowie_api_rest.schemas.AlbumRead" title="bowie_api_rest.schemas.AlbumRead">AlbumRead</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1564,7 +1564,7 @@ It includes routes to retrieve albums by track title, list all albums, and fetch
 <dd><p>Set the session dependency callable to provide a SQLAlchemy session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dep</strong> (<em>Callable</em><em>[</em><em>...</em><em>, </em><em>Session</em><em>]</em>) – Callable that returns a SQLAlchemy session generator.</p>
+<dd class="field-odd"><p><strong>dep</strong> (<em>Callable</em><em>[</em><em>...</em><em>, </em><em>Generator</em><em>[</em><em>Session</em><em>, </em><em>None</em><em>, </em><em>None</em><em>]</em><em>]</em>) – Callable that returns a SQLAlchemy session generator.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
