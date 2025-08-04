@@ -5,7 +5,7 @@ This module defines the API routes for interacting with albums and tracks in the
 It includes routes to retrieve albums by track title, list all albums, and fetch albums by title.
 """
 
-from collections.abc import Callable
+from collections.abc import Callable, Generator
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
@@ -20,68 +20,80 @@ from bowie_api_rest.schemas import AlbumRead, HealthResponse, TrackRead
 router = APIRouter()
 
 # Placeholder for the session dependency to be set dynamically
-_get_session_dependency: Callable[..., Session] | None = None
+_get_session_dependency: Callable[..., Generator[Session, None, None]] | None = None
 
 
-def set_get_session_dependency(dep: Callable[..., Session]) -> None:
+def set_get_session_dependency(dep: Callable[..., Generator[Session, None, None]]) -> None:
     """
     Set the session dependency callable to provide a SQLAlchemy session.
 
-    :param Callable[..., Session] dep: Callable that returns a SQLAlchemy session generator.
+    :param dep: Callable that returns a SQLAlchemy session generator.
+    :type dep: Callable[..., Generator[Session, None, None]]
     """
     global _get_session_dependency
     _get_session_dependency = dep
 
 
-def get_session_placeholder() -> Session:
+def get_session_placeholder() -> Generator[Session, None, None]:
     """
     Retrieve a SQLAlchemy session from the injected dependency.
 
     :raises RuntimeError: If the session dependency has not been set.
-    :return: SQLAlchemy session instance.
-    :rtype: Session
+    :return: SQLAlchemy session generator.
+    :rtype: Generator[Session, None, None]
     """
     if _get_session_dependency is None:
         raise RuntimeError("Session dependency has not been set")
-    # Consume the generator to get the session instance
-    return next(_get_session_dependency())
+    yield from _get_session_dependency()
+
+
+def _get_session() -> Session:
+    """
+    Dependency function to provide a SQLAlchemy session for FastAPI routes.
+
+    :return: A SQLAlchemy session instance.
+    :rtype: Session
+    """
+    return next(get_session_placeholder())
+
+
+# Create a FastAPI dependency singleton to avoid calling Depends() in function defaults
+session_dependency = Depends(_get_session)
 
 
 @router.get("/tracks/{track_title}/albums", response_model=list[AlbumRead])
 def search_albums_containing_track(
-    track_title: str, session: Session = Depends(get_session_placeholder)
+    track_title: str,
+    session: Session = session_dependency,
 ) -> list[AlbumRead]:
     """
     Retrieve all albums containing at least one track whose title partially matches the given string (case-insensitive).
 
     Only the matching tracks are included in each album's track list.
 
-    :param str track_title: Partial track title to search for (case-insensitive).
-    :param Session session: SQLAlchemy session (injected dependency).
+    :param track_title: Partial track title to search for (case-insensitive).
+    :type track_title: str
+    :param session: SQLAlchemy session (injected dependency).
+    :type session: Session
     :raises HTTPException: When no albums or matching tracks are found.
     :return: List of albums with filtered matching tracks.
-    :rtype: List[AlbumRead]
+    :rtype: list[AlbumRead]
     """
     albums: list[Album] = get_albums_containing_track(session, track_title)
 
-    # If no albums are found, raise HTTPException
     if not albums:
         raise HTTPException(status_code=404, detail="No albums found for this track")
 
-    lower_search: str = track_title.lower()
+    lower_search = track_title.lower()
     result: list[AlbumRead] = []
 
-    # Iterate through albums and filter tracks based on the search string
     for album in albums:
         filtered_tracks = [t for t in album.tracks if lower_search in t.title.lower()]
         if filtered_tracks:
-            # Convert filtered tracks to Pydantic models
             track_reads = [TrackRead(id=t.id, title=t.title, duration=t.duration) for t in filtered_tracks]
-            # Create AlbumRead model with filtered tracks only
             album_read = AlbumRead(id=album.id, title=album.title, year=album.year, tracks=track_reads)
             result.append(album_read)
 
-    # If no matching tracks are found, raise HTTPException
     if not result:
         raise HTTPException(status_code=404, detail="No tracks found matching the query")
 
@@ -89,15 +101,15 @@ def search_albums_containing_track(
 
 
 @router.get("/albums/", response_model=list[AlbumRead])
-def list_albums(session: Session = Depends(get_session_placeholder)) -> list[AlbumRead]:
+def list_albums(session: Session = session_dependency) -> list[AlbumRead]:
     """
     List all albums with their tracks.
 
-    :param Session session: SQLAlchemy session (injected dependency).
+    :param session: SQLAlchemy session (injected dependency).
+    :type session: Session
     :return: List of all albums with tracks.
-    :rtype: List[AlbumRead]
+    :rtype: list[AlbumRead]
     """
-    # Query all albums and include their associated tracks
     stmt = select(Album).options(selectinload(Album.tracks))
     albums = session.execute(stmt).scalars().all()
     return albums
@@ -106,20 +118,21 @@ def list_albums(session: Session = Depends(get_session_placeholder)) -> list[Alb
 @router.get("/albums/by-title/", response_model=list[AlbumRead])
 def search_albums_by_title(
     album_title: str = Query(..., description="Title of the album to search (case-insensitive)"),
-    session: Session = Depends(get_session_placeholder),
+    session: Session = session_dependency,
 ) -> list[AlbumRead]:
     """
     Get albums by partial album title and return all matching albums with their tracks.
 
-    :param str album_title: Partial title of the album to search.
-    :param Session session: SQLAlchemy session (injected dependency).
+    :param album_title: Partial title of the album to search.
+    :type album_title: str
+    :param session: SQLAlchemy session (injected dependency).
+    :type session: Session
     :raises HTTPException: If no album is found with the given title.
     :return: List of albums with tracks that match the partial title.
-    :rtype: List[AlbumRead]
+    :rtype: list[AlbumRead]
     """
     albums: list[Album] = get_albums_by_title(session, album_title)
 
-    # If no albums are found, raise HTTPException
     if not albums:
         raise HTTPException(status_code=404, detail="Album not found")
 
