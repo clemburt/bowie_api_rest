@@ -27,8 +27,7 @@ def set_get_session_dependency(dep: Callable[..., Generator[Session, None, None]
     """
     Set the session dependency callable to provide a SQLAlchemy session.
 
-    :param dep: Callable that returns a SQLAlchemy session generator.
-    :type dep: Callable[..., Generator[Session, None, None]]
+    :param Callable[..., Generator[Session, None, None]] dep: Callable that returns a SQLAlchemy session generator.
     """
     global _get_session_dependency
     _get_session_dependency = dep
@@ -71,10 +70,8 @@ def search_albums_containing_track(
 
     Only the matching tracks are included in each album's track list.
 
-    :param track_title: Partial track title to search for (case-insensitive).
-    :type track_title: str
-    :param session: SQLAlchemy session (injected dependency).
-    :type session: Session
+    :param str track_title: Partial track title to search for (case-insensitive).
+    :param Session session: SQLAlchemy session (injected dependency).
     :raises HTTPException: When no albums or matching tracks are found.
     :return: List of albums with filtered matching tracks.
     :rtype: list[AlbumRead]
@@ -105,8 +102,7 @@ def list_albums(session: Session = session_dependency) -> list[AlbumRead]:
     """
     List all albums with their tracks.
 
-    :param session: SQLAlchemy session (injected dependency).
-    :type session: Session
+    :param Session session: SQLAlchemy session (injected dependency).
     :return: List of all albums with tracks.
     :rtype: list[AlbumRead]
     """
@@ -123,10 +119,8 @@ def search_albums_by_title(
     """
     Get albums by partial album title and return all matching albums with their tracks.
 
-    :param album_title: Partial title of the album to search.
-    :type album_title: str
-    :param session: SQLAlchemy session (injected dependency).
-    :type session: Session
+    :param str album_title: Partial title of the album to search.
+    :param Session session: SQLAlchemy session (injected dependency).
     :raises HTTPException: If no album is found with the given title.
     :return: List of albums with tracks that match the partial title.
     :rtype: list[AlbumRead]
