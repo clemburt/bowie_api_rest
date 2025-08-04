@@ -1,6 +1,7 @@
 [project]
 name = "bowie_api_rest"
-version = "0.1.0"
+# Version will be dynamically determined at build time instead of hardcoded here
+dynamic = ["version"]
 description = "A RESTful API built with FastAPI and SQLAlchemy to explore David Bowie's discography, using pdm and pydantic"
 authors = [
     {name = "Clement Burtscher", email = "clement.burtscher@laposte.net"},
@@ -11,7 +12,7 @@ readme = "README.md"
 license = {text = "MIT"}
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend", "setuptools"]
 build-backend = "pdm.backend"
 
 [dependency-groups]
